@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="search_results">
+    <item quantity="one">%1$d risultato per \"%2$s\":</item>
+    <item quantity="other">%1$d risultati per \"%2$s\":</item>
+  </plurals>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Vai alla home page"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Vai in alto"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Altre opzioni"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Fine"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Visualizza tutte"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Scegli un\'applicazione"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"OFF"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ON"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Cerca…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Cancella query"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Query di ricerca"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Cerca"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Invia query"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Ricerca vocale"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Condividi con"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Condividi con %s"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Comprimi"</string>
+    <string name="authentication_error_message">Errore di autenticazione dei tuoi dettagli.\r\nProva a inserire di nuovo le tue informazioni o contatta il gestore del tuo servizio TV per ottenere accesso a questi contenuti.</string>
+    <string name="authorization_error_message">Non sei autorizzato a visualizzare questi contenuti.\r\nContatta il gestore del tuo servizio TV per ottenere accesso a questi contenuti.</string>
+    <string name="auto_play_speed">Velocità di scorrimento</string>
+    <string name="btn_get_new_code">OTTIENI NUOVO CODICE</string>
+    <string name="btn_submit">INVIA</string>
+    <string name="copyright">Copyright 2016. Tutti i diritti riservati.</string>
+    <string name="daily_pass_1">Pass</string>
+    <string name="daily_pass_2">giornaliero</string>
+    <string name="dismiss_label">Ignora</string>
+    <string name="duration">%1$d:%2$02d:%3$02d</string>
+    <string name="episode">Episodio</string>
+    <string name="exit_app_label">Esci dall\'applicazione</string>
+    <string name="feed_error_message">Servizio non disponibile. Riprova più tardi.</string>
+    <string name="feed_loading">Caricamento</string>
+    <string name="feed_reloading">Nuovo caricamento</string>
+    <string name="go_to_network_settings_label">Vai alle impostazioni di rete</string>
+    <string name="iap_error_dialog_title">Errore di acquisto</string>
+    <string name="later">Più tardi</string>
+    <string msgid="4541442045214207774" name="lb_control_display_fast_forward_multiplier">"%1$dX"</string>
+    <string msgid="3097220783222910245" name="lb_control_display_rewind_multiplier">"%1$dX"</string>
+    <string msgid="6133362019475930048" name="lb_playback_controls_closed_captioning_disable">"Disattiva sottotitoli"</string>
+    <string msgid="2429655367176440226" name="lb_playback_controls_closed_captioning_enable">"Attiva sottotitoli"</string>
+    <string msgid="8569951318244687220" name="lb_playback_controls_fast_forward">"Avanza velocemente"</string>
+    <string msgid="1058753672110224526" name="lb_playback_controls_fast_forward_multiplier">"Avanti veloce: %1$dX"</string>
+    <string msgid="8637371582779057866" name="lb_playback_controls_high_quality_disable">"Disattiva alta qualità"</string>
+    <string msgid="202415780019335254" name="lb_playback_controls_high_quality_enable">"Attiva alta qualità"</string>
+    <string msgid="2330770008796987655" name="lb_playback_controls_more_actions">"Altre azioni"</string>
+    <string msgid="6189521112079849518" name="lb_playback_controls_pause">"Metti in pausa"</string>
+    <string msgid="731953341987346903" name="lb_playback_controls_play">"Riproduci"</string>
+    <string msgid="6730354406289599000" name="lb_playback_controls_repeat_all">"Ripeti tutti"</string>
+    <string msgid="87476947476529036" name="lb_playback_controls_repeat_none">"Non ripetere nessuno"</string>
+    <string msgid="3285202316452203619" name="lb_playback_controls_repeat_one">"Ripeti uno"</string>
+    <string msgid="2227196334132350684" name="lb_playback_controls_rewind">"Riavvolgi"</string>
+    <string msgid="1640629531440849942" name="lb_playback_controls_rewind_multiplier">"Indietro: %1$dX"</string>
+    <string msgid="8388150597335115226" name="lb_playback_controls_shuffle_disable">"Disattiva riproduzione casuale"</string>
+    <string msgid="1099874107835264529" name="lb_playback_controls_shuffle_enable">"Attiva riproduzione casuale"</string>
+    <string msgid="2946499493161095772" name="lb_playback_controls_skip_next">"Salta successivo"</string>
+    <string msgid="2326801832933178348" name="lb_playback_controls_skip_previous">"Salta precedente"</string>
+    <string msgid="4498041193172964797" name="lb_playback_controls_thumb_down">"Deseleziona pollice abbassato"</string>
+    <string msgid="2936020280629424365" name="lb_playback_controls_thumb_down_outline">"Seleziona pollice abbassato"</string>
+    <string msgid="6530420347129222601" name="lb_playback_controls_thumb_up">"Deseleziona Mi piace"</string>
+    <string msgid="1577637924003500946" name="lb_playback_controls_thumb_up_outline">"Seleziona Mi piace"</string>
+    <string name="lb_search_bar_hint">@string/search_bar_hint</string>
+    <string name="lb_search_bar_hint_speech">@string/search_bar_hint</string>
+    <string msgid="1627103380996590035" name="lb_search_bar_hint_with_title">"Cerca in <ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g>"</string>
+    <string msgid="2712734639766312034" name="lb_search_bar_hint_with_title_speech">"Parla per cercare in <ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g>"</string>
+    <string name="loading">Caricamento</string>
+    <string name="login_description">Accedi al tuo account.</string>
+    <string name="login_dialog_description">Non hai eseguito l\'accesso. Seleziona e riproduci qualsiasi video per accedere.</string>
+    <string name="login_label">Accedi</string>
+    <string name="logout_description">Concludi l\'accesso al tuo account.</string>
+    <string name="logout_dialog_description">Vuoi davvero concludere l\'accesso?</string>
+    <string name="logout_dialog_option_1">Sì</string>
+    <string name="logout_dialog_option_2">No</string>
+    <string name="logout_failure_message">Conclusione accesso non riuscita. Riprova.</string>
+    <string name="logout_label">Concludi accesso</string>
+    <string name="logout_success_message">Conclusione accesso riuscita. Verrai a breve reindirizzato alla pagina dei dettagli.</string>
+    <string name="network_error_message">Rete al momento non disponibile. Riprova più tardi.</string>
+    <string name="now">Ora</string>
+    <string name="ok">@android:string/ok</string>
+    <string name="optional_login_dialog_message">Accedi ora per ottenere il massimo dalla tua app.</string>
+    <string name="optional_login_dialog_title">Accesso</string>
+    <string msgid="5651268540267663887" name="orb_search_action">"Azione di ricerca"</string>
+    <string name="playback_error_message">Riproduzione non riuscita. Riprova.</string>
+    <string name="premium_1">Scegli</string>
+    <string name="premium_2">Premium</string>
+    <string name="recommended_contents_header">Contenuti consigliati</string>
+    <string name="registration_code_error_message">Errore nell\'ottenere il codice di registrazione. Ignora questo messaggio e riprova. </string>
+    <string name="related_contents">Contenuti consigliati</string>
+    <string name="resume_1">Riprendi</string>
+    <string name="resume_2">riproduzione</string>
+    <string name="search_bar_hint">Sto cercando…</string>
+    <string name="search_results">Risultati della ricerca</string>
+    <string name="season">Stagione</string>
+    <string name="second_screen_login_instruction_line_1">Accedi al computer o dispositivo mobile</string>
+    <string name="second_screen_login_instruction_line_3">Inserisci il codice seguente (distingue maiuscole/minuscole):</string>
+    <string name="second_screen_login_instruction_line_4">Caricamento…</string>
+    <string name="settings_title">Impostazioni</string>
+    <string name="slideshow_description">Imposta la velocità della presentazione.</string>
+    <string name="slideshow_label">Impostazioni presentazione</string>
+    <string name="slideshow_title">Velocità della presentazione</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="subscription_expired">La tua iscrizione è scaduta.</string>
+    <string name="terms_description">Leggi le note legali.</string>
+    <string name="terms_title">Termini di utilizzo</string>
+    <string name="time_remaining">Tempo rimasto: %s</string>
+    <string name="try_again_label">Riprova</string>
+    <string name="video_subtitle">Sottotitolo del video</string>
+    <string name="video_title">Titolo del video</string>
+    <string name="watch_from_beginning_1">Guarda</string>
+    <string name="watch_from_beginning_2">dall\'inizio</string>
+    <string name="watch_now_1">Guarda</string>
+    <string name="watch_now_2">ora</string>
+</resources>

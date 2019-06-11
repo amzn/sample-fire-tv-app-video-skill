@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Application/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-land-v4/values-xlarge-land-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/tomjoht/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.1.aar/db22df72f7fefe2f30f6eb9cb4932d97/res/values-xlarge-land/values-xlarge-land.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "237",
+                        "endColumns": "63",
+                        "endOffsets": "296"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "63",
+                        "endOffsets": "114"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="reference" name="guillemetDrawable"/>
+    <color name="accent">#EE962D</color>
+    <color name="action_button_text_color">@color/primary_text</color>
+    <color name="action_button_text_color_focused">@color/primary_text</color>
+    <color name="details_description_extended">@color/primary_text</color>
+    <color name="error_dialog_bg_color">#13181F</color>
+    <color name="login_code_color">@color/secondary_text</color>
+    <color name="login_instructions_color">@color/primary_text</color>
+    <color name="logout_desc_color">@color/secondary_text</color>
+    <color name="logout_title_color">@color/primary_text</color>
+    <color name="primary_text">#E6FFFFFF</color>
+    <color name="progress_fragment_bg_color">#CC000000</color>
+    <color name="search_orb">@color/accent</color>
+    <color name="secondary_text">#FFFFFFFF</color>
+    <color name="spinner_color">#FFFFFF</color>
+    <dimen name="action_widget_height">40dp</dimen>
+    <dimen name="action_widget_padding">10dp</dimen>
+    <dimen name="action_widget_width">40dp</dimen>
+    <dimen name="details_description_extended_text">15sp</dimen>
+    <dimen name="error_button_side_margin">10dp</dimen>
+    <dimen name="error_buttonrow_margin_bottom">150dp</dimen>
+    <dimen name="error_image_margin_bottom">24dp</dimen>
+    <dimen name="error_image_margin_up">154dp</dimen>
+    <dimen name="error_image_max_height">120dp</dimen>
+    <dimen name="error_message_margin_bottom">24dp</dimen>
+    <dimen name="error_message_max_width">650dp</dimen>
+    <dimen name="grid_view_left_right_padding">12dip</dimen>
+    <dimen name="login_fragment_height">200dp</dimen>
+    <dimen name="logout_fragment_button_height">32dp</dimen>
+    <dimen name="logout_fragment_button_top_margins">22dp</dimen>
+    <dimen name="logout_fragment_button_width">128dp</dimen>
+    <dimen name="logout_fragment_desc_size">14sp</dimen>
+    <dimen name="logout_fragment_height">180dp</dimen>
+    <dimen name="logout_fragment_middle_margins">7dp</dimen>
+    <dimen name="logout_fragment_padding">20dp</dimen>
+    <dimen name="logout_fragment_title_size">16sp</dimen>
+    <dimen name="logout_fragment_width">309dp</dimen>
+    <dimen name="read_dialog_height">320dp</dimen>
+    <dimen name="read_dialog_text_margin_left">34.0dp</dimen>
+    <dimen name="read_dialog_text_margin_right">14dp</dimen>
+    <dimen name="read_dialog_text_margin_vertical">24dp</dimen>
+    <dimen name="read_dialog_width">519dp</dimen>
+    <dimen name="slideshow_setting_button_height">5dp</dimen>
+    <dimen name="slideshow_setting_button_width">130dp</dimen>
+    <dimen name="slideshow_setting_height">120dp</dimen>
+    <dimen name="slideshow_setting_middle_margins">6dp</dimen>
+    <dimen name="slideshow_setting_padding">20dp</dimen>
+    <dimen name="slideshow_setting_title_size">10dp</dimen>
+    <dimen name="slideshow_setting_width">309dp</dimen>
+    <dimen name="spinner_thickness">5dp</dimen>
+    <drawable name="action_button_focused">@drawable/btn_generic_focused</drawable>
+    <drawable name="action_button_normal">@drawable/btn_normal</drawable>
+    <drawable name="company_logo">@drawable/logo</drawable>
+    <integer name="ellipsized_text_view_max_characters">1700</integer>
+    <integer name="slide_show_fade_anim_duration">600</integer>
+    <integer name="slide_show_fast_speed">3000</integer>
+    <integer name="slide_show_middle_speed">5000</integer>
+    <integer name="slide_show_slow_speed">10000</integer>
+    <string name="authentication_error_message">Error authenticating your details.\r\nPlease try entering your information again or contact your cable provider to get access to this content.</string>
+    <string name="authentication_system_error_message">You must update your Fire TV for the Hallmark app to work properly. To install the latest update, go to Settings > Device > About > Install System Update. If the problem persists, please contact Amazon Customer Service at Settings > Help > Contact Us.</string>
+    <string name="authorization_error_message">You are not authorized to view this content.\r\nPlease contact your cable provider to get access to this content.</string>
+    <string name="auto_play_speed">Slide speed</string>
+    <string name="btn_get_new_code">GET NEW CODE</string>
+    <string name="btn_submit">SUBMIT</string>
+    <string name="default_bold_font">Roboto Bold</string>
+    <string name="default_light_font">Roboto Light</string>
+    <string name="default_regular_font">Roboto Regular</string>
+    <string name="dismiss_label">Dismiss</string>
+    <string name="exit_app_label">Exit the Application</string>
+    <string name="feed_error_message">Service is unavailable. Please try again later.</string>
+    <string name="go_to_network_settings_label">Go to Network Settings</string>
+    <string name="login_description">Log into your account.</string>
+    <string name="login_dialog_description">You are not logged in. Select and play any video to log in.</string>
+    <string name="login_label">Login</string>
+    <string name="logout_description">Log out of your account.</string>
+    <string name="logout_dialog_description">Are you sure you want to logout?</string>
+    <string name="logout_dialog_option_1">Yes</string>
+    <string name="logout_dialog_option_2">No</string>
+    <string name="logout_failure_message">Logout UnSuccessful. Please retry.</string>
+    <string name="logout_label">Logout</string>
+    <string name="logout_settings_fragment_tag">logout_settings_fragment</string>
+    <string name="logout_success_message">Logout Successful.You shall soon be redirected to the details page.</string>
+    <string name="network_error_message">Network is currently unavailable. Please try again later.</string>
+    <string name="notice_settings_fragment_tag">notice_settings_fragment</string>
+    <string name="playback_error_message">Playback failed. Please retry.</string>
+    <string name="registration_code_error_message">Error obtaining the registration code. Please dismiss this message and retry. </string>
+    <string name="second_screen_login_instruction_line_1">Go to your computer or mobile device</string>
+    <string name="second_screen_login_instruction_line_2">Visit YOUR_AUTHENTICATION_URL</string>
+    <string name="second_screen_login_instruction_line_3">Enter the following case-sensitive code:</string>
+    <string name="second_screen_login_instruction_line_4">Loading…</string>
+    <string name="slideshow_description">Set slide show speed.</string>
+    <string name="slideshow_label">Slide Show Setting</string>
+    <string name="slideshow_settings_fragment_tag">slideshow_settings_fragment</string>
+    <string name="slideshow_title">Slide show speed</string>
+    <string name="terms_description">Review the Legal Notices.</string>
+    <string name="terms_of_use_file">terms_of_use.html</string>
+    <string name="terms_title">Terms of Use</string>
+    <string name="try_again_label">Try Again</string>
+    <style name="error_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@color/error_dialog_bg_color</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    <style name="progress_dialog" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@color/progress_fragment_bg_color</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    <declare-styleable name="EllipsizedTextView">
+        <attr name="guillemetDrawable"/>
+        <attr format="dimension" name="readDialogWidth"/>
+        <attr format="dimension" name="readDialogHeight"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/libs/json-path-2.1.0.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../DynamicParser/libs/json-path-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="analytics_attribute_to_content_extra_map_file">configurations/AttributeToExtraMap.json</string>
+</resources>

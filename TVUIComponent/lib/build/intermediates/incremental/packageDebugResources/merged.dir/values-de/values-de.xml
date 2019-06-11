@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="search_results">
+    <item quantity="one">%1$d Ergebnis für „%2$s“:</item>
+    <item quantity="other">%1$d Ergebnisse für „%2$s“:</item>
+  </plurals>
+    <string name="copyright">Copyright 2015 Amazon.com, Inc. oder Tochtergesellschaften. Alle Rechte vorbehalten.</string>
+    <string name="duration">%1$d:%2$02d:%3$02d</string>
+    <string name="episode">Folge</string>
+    <string name="feed_loading">Wird geladen</string>
+    <string name="feed_reloading">Wird neu geladen</string>
+    <string name="lb_search_bar_hint">@string/search_bar_hint</string>
+    <string name="lb_search_bar_hint_speech">@string/search_bar_hint</string>
+    <string name="related_contents">Empfohlener Inhalt</string>
+    <string name="search_bar_hint">Ich suche nach…</string>
+    <string name="search_results">Suchergebnisse</string>
+    <string name="season">Staffel</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="terms_title">Nutzungsbedingungen</string>
+    <string name="time_remaining">Verbleibende Zeit: %s</string>
+    <string name="video_subtitle">Video-Untertitel</string>
+    <string name="video_title">Videotitel</string>
+</resources>

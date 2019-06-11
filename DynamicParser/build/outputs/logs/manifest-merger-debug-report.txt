@@ -1,0 +1,43 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+	package
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:16:11-45
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:1-24:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:15:11-69
+application
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:18:5-22:19
+	android:supportsRtl
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:20:13-39
+	android:allowBackup
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml:19:13-39
+uses-sdk
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/DynamicParser/src/main/AndroidManifest.xml

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/sample-alexa-firetv-app-v1/DynamicParser/libs/json-smart-2.2.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../DynamicParser/libs/json-smart-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

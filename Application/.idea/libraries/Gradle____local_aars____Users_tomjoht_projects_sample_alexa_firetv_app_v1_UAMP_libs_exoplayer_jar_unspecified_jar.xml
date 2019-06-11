@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/sample-alexa-firetv-app-v1/UAMP/libs/exoplayer.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../UAMP/libs/exoplayer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

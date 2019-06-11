@@ -1,0 +1,18 @@
+{
+  "cooker": "DynamicParser",
+  "format": "json",
+  "model": "com.amazon.android.model.content.Content",
+  "modelType": "array",
+  "query": "$.items[?(@.categories[0] in [$$par0$$])]",
+  "matchList": [
+    "title@mTitle",
+    "id@mId",
+    "description@mDescription",
+    "videoURL@mUrl",
+    "imgURL@mCardImageUrl",
+    "imgURL@mBackgroundImageUrl",
+    "channel_id@mChannelId",
+    "recommendations@mRecommendations",
+    "live@live"
+  ]
+}

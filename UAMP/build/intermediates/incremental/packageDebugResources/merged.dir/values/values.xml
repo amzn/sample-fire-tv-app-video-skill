@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="hide_more_options">true</bool>
+    <color name="lb_playback_background_color">@color/playback_background</color>
+    <color name="lb_playback_background_progress_color">@color/playback_background_progress_bar
+    </color>
+    <color name="lb_playback_controls_background_dark">#c0000000</color>
+    <color name="lb_playback_controls_background_light">#80000000</color>
+    <color name="lb_playback_controls_time_text_color">@color/playback_time_text</color>
+    <color name="lb_playback_progress_color_no_theme">@color/progress_bar</color>
+    <color name="lb_playback_secondary_progress_color">@color/playback_buffered_progress</color>
+    <color name="playback_background">#FF292929</color>
+    <color name="playback_background_progress_bar">#FF373737</color>
+    <color name="playback_buffered_progress">#FF5A5A5A</color>
+    <color name="playback_time_text">#FFFFFFFF</color>
+    <color name="playback_video_details_text_color">#FFFFFF</color>
+    <color name="progress_bar">#FFDADADA</color>
+    <color name="spinner_color">#FFFFFF</color>
+    <dimen name="lb_playback_controls_align_bottom">58dp</dimen>
+    <dimen name="lb_playback_controls_card_height">64dp</dimen>
+    <dimen name="lb_playback_controls_margin_bottom">16dp</dimen>
+    <dimen name="lb_playback_controls_padding_bottom">28dp</dimen>
+    <dimen name="lb_playback_controls_time_text_size">14sp</dimen>
+    <dimen name="lb_playback_controls_z">4dp</dimen>
+    <dimen name="lb_playback_current_time_margin_start">8dp</dimen>
+    <dimen name="lb_playback_description_margin_end">56dp</dimen>
+    <dimen name="lb_playback_description_margin_start">56dp</dimen>
+    <dimen name="lb_playback_description_margin_top">24dp</dimen>
+    <dimen name="lb_playback_major_fade_translate_y">200dp</dimen>
+    <dimen name="lb_playback_minor_fade_translate_y">36dp</dimen>
+    <dimen name="lb_playback_total_time_margin_end">8dp</dimen>
+    <dimen name="playback_control_left_margin">40dp</dimen>
+    <dimen name="playback_video_details_margin">36dp</dimen>
+    <dimen name="playback_video_details_min_width">396dp</dimen>
+    <dimen name="playback_video_subtitle_text_size">16sp</dimen>
+    <dimen name="playback_video_title_margin">3dp</dimen>
+    <dimen name="playback_video_title_text_size">20sp</dimen>
+    <dimen name="spinner_thickness">5dp</dimen>
+    <item name="dummy_control__action" type="id"/>
+    <string name="drm_encryption_schema">ENCRYPTION_DEFAULT</string>
+    <string name="la_url"/>
+</resources>

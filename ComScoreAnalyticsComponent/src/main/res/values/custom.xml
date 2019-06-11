@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+A copy of the License is located at
+
+    http://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+-->
+<resources>
+
+    <!-- Encrypted ComScore client token for your application, encrypt it using ResourceObfuscationStandaloneUtility -->
+    <string name="encrypted_comscore_client_id">encrypted_comscore_client_id</string>
+
+    <!-- Encrypted ComScore app id for your application, encrypt it using ResourceObfuscationStandaloneUtility -->
+    <string name="encrypted_comscore_publisher_secret">encrypted_comscore_publisher_secret</string>
+
+    <!-- PseudoRandom strings, used to generate random key for encrypting/decrypting ComScore resources.
+    These keys should always remain in sync with the keys used by ResourceObfuscationStandaloneUtility -->
+    <string name="comscore_key_1">comscore_key_1</string>
+    <string name="comscore_key_2">comscore_key_2</string>
+    <string name="comscore_key_3">comscore_key_3</string>
+    <string name="comscore_key_4">comscore_key_4</string>
+    <string name="comscore_key_5">comscore_key_5</string>
+    <string name="comscore_key_6">comscore_key_6</string>
+
+    <!-- Content Classification type video+audio labels -->
+    <string name="premium_short_form_video_on_demand_content">vc11</string>
+    <string name="premium_long_form_video_on_demand_content">vc12</string>
+    <string name="premium_live_streaming_content">vc13</string>
+    <string name="user_generated_short_form_video_on_demand_content">vc21</string>
+    <string name="user_generated_long_form_video_on_demand_content">vc22</string>
+    <string name="user_generated_live_streaming_content">vc23</string>
+    <string name="bumpers_video_content">vc99</string>
+
+    <!-- Content Classification type audio-only labels -->
+    <string name="premium_short_form_audio_on_demand_content">ac11</string>
+    <string name="premium_long_form_audio_on_demand_content">ac12</string>
+    <string name="premium_live_streaming_audio_content">ac13</string>
+    <string name="user_generated_short_form_audio_on_demand_content">ac21</string>
+    <string name="user_generated_long_form_audio_on_demand_content">ac22</string>
+    <string name="user_generated_live_streaming_audio_content">ac23</string>
+    <string name="bumpers_audio_content">ac99</string>
+
+    <!-- Content Classification type general content label -->
+    <string name="other_content">vc00</string>
+    <string name="other_audio_content">ac00</string>
+
+    <!-- Advertisement Classification type Video+Audio labels -->
+    <string name="linear_pre_roll_video_on_demand_ad">va11</string>
+    <string name="linear_mid_roll_video_on_demand_ad">va12</string>
+    <string name="linear_post_roll_video_on_demand_ad">va13</string>
+    <string name="linear_live_ad">va21</string>
+    <string name="branded_entertainment_during_linear_pre_roll_ad">va31</string>
+    <string name="branded_entertainment_during_linear_mid_roll_ad">va32</string>
+    <string name="branded_entertainment_during_linear_post_roll_ad">va33</string>
+    <string name="branded_entertainment_as_content_ad">va34</string>
+    <string name="branded_entertainment_during_live_streaming_ad">va35</string>
+
+    <!-- Advertisement Classification type audio-only labels -->
+    <string name="linear_pre_roll_video_on_demand_audio_ad">aa11</string>
+    <string name="linear_mid_roll_video_on_demand_audio_ad">aa12</string>
+    <string name="linear_post_roll_video_on_demand_audio_ad">aa13</string>
+    <string name="linear_live_audio_ad">aa21</string>
+    <string name="branded_entertainment_during_linear_pre_roll_audio_ad">aa31</string>
+    <string name="branded_entertainment_during_linear_mid_roll_audio_ad">aa32</string>
+    <string name="branded_entertainment_during_linear_post_roll_audio_ad">aa33</string>
+    <string name="branded_entertainment_as_content_audio_ad">aa34</string>
+    <string name="branded_entertainment_during_live_streaming_audio_ad">aa35</string>
+
+    <!-- Advertisement Classification type general content label -->
+    <string name="other_ad">va00</string>
+    <string name="other_audio_ad">aa00</string>
+
+</resources>

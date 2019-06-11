@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/Sample-vsk-fab-app/DynamicParser/libs/slf4j-api-1.7.13.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Sample-vsk-fab-app/DynamicParser/libs/slf4j-api-1.7.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

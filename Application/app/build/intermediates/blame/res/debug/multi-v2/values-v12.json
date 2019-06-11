@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Application/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v12/values-v12.xml",
+            "map": [
+                {
+                    "source": "/Users/tomjoht/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.1.aar/db22df72f7fefe2f30f6eb9cb4932d97/res/values-v12/values-v12.xml",
+                    "from": {
+                        "startLines": "4,7,10,11",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "234,458,658,777",
+                        "endLines": "6,9,10,11",
+                        "endColumns": "12,12,118,94",
+                        "endOffsets": "453,653,772,867"
+                    },
+                    "to": {
+                        "startLines": "2,5,8,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,279,479,598",
+                        "endLines": "4,7,8,9",
+                        "endColumns": "12,12,118,94",
+                        "endOffsets": "274,474,593,688"
+                    }
+                }
+            ]
+        }
+    ]
+}

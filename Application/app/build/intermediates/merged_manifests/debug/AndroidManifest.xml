@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+A copy of the License is located at
+
+    http://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+-->
+<manifest xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fireappbuilder.android.calypsovsk"
+    android:versionCode="140"
+    android:versionName="1.4.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="23" />
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--
+         This permission ensures that no other application can intercept your
+        ADM messages.
+    -->
+    <permission
+        android:name="com.fireappbuilder.android.mycompany123.RECEIVE_ADM_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.fireappbuilder.android.mycompany123.RECEIVE_ADM_MESSAGE" />
+    <!--
+    This permission allows your app access to receive push notifications
+    from ADM.
+    -->
+    <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" /> <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Launcher integration -->
+    <uses-permission android:name="com.amazon.device.permission.COMRADE_CAPABILITIES" /> <!-- Permission for getting voice command controls using media session -->
+    <!-- Turning it Off so that we can use ADM with VSK instead -->
+<!--     <uses-permission android:name="com.amazon.permission.media.session.voicecommandcontrol"/> -->
+    <application
+        android:name="com.amazon.android.tv.tenfoot.base.TenFootApp"
+        android:allowBackup="true"
+        android:banner="@drawable/app_banner"
+        android:debuggable="true"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.amazon.android.tv.tenfoot.ui.activities.SplashActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- Launcher integration intents -->
+            <!-- Uncomment the below intent filters to enable launcher integration -->
+
+            <intent-filter>
+                <action android:name="PLAY_CONTENT_FROM_LAUNCHER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--
+            <intent-filter>
+                <action android:name="SIGN_IN_FROM_LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            -->
+            <!-- Launcher integration intents complete -->
+        </activity>
+        <!--
+            You must explicitly enable ADM and declare whether your app cannot work without
+            ADM (android:required="true") or can work without ADM (android:required="false").
+            If you specify android:required="false", your app must degrade gracefully if ADM
+            is unavailable.
+        -->
+        <amazon:enable-feature
+            android:name="com.amazon.device.messaging"
+            android:required="false" />
+
+        <activity
+            android:name="com.amazon.android.tv.tenfoot.ui.activities.FullContentBrowseActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.amazon.android.tv.tenfoot.ui.activities.ContentBrowseActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.amazon.android.tv.tenfoot.ui.activities.ContentDetailsActivity"
+            android:exported="true" >
+
+            <!-- Receives the PendingIntent requests to view a specific content. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <!-- No category needed, because the Intent will specify this class component -->
+            </intent-filter>
+        </activity>
+        <activity android:name="com.amazon.android.tv.tenfoot.ui.activities.ContentSearchActivity" />
+        <activity android:name="com.amazon.android.uamp.ui.PlaybackActivity" /> <!-- This is needed by the ADM Implementation -->
+        <service
+            android:name="com.amazon.android.tv.tenfoot.receiver.TenFootADMessageHandler"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.amazon.android.tv.tenfoot.receiver.TenFootADMessageHandler$MessageAlertReceiver"
+            android:permission="com.amazon.device.messaging.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.amazon.device.messaging.intent.REGISTRATION" />
+                <action android:name="com.amazon.device.messaging.intent.RECEIVE" />
+
+                <category android:name="com.fireappbuilder.android.mycompany123" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="AMZNAP@AMZNPlayer"
+            android:value="UAMP@com.amazon.mediaplayer.module.AMZNMediaPlayerImplCreator" /> <!-- Launcher integration -->
+        <!-- Uncomment the below receiver to enable launcher integration -->
+        <receiver android:name="com.amazon.android.contentbrowser.helper.LauncherIntegrationBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.amazon.device.REQUEST_CAPABILITIES" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.amazon.android.contentbrowser.recommendations.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.amazon.android.contentbrowser.recommendations.UpdateRecommendationsService"
+            android:enabled="true" />
+        <service
+            android:name="com.amazon.android.contentbrowser.recommendations.DeleteRecommendationService"
+            android:enabled="true" />
+
+        <meta-data
+            android:name="AMZNAP@PassThroughAds"
+            android:value="IAds@com.amazon.ads.passthrough.PassThroughAdsImplCreator" />
+        <meta-data
+            android:name="AMZNAP@PassThroughLogin"
+            android:value="IAuthentication@com.amazon.android.auth.passthrough.PassThroughLoginImplCreator" />
+        <meta-data
+            android:name="AMZNAP@LoggerAnalytics"
+            android:value="IAnalytics@com.amazon.analytics.logger.LoggerAnalyticsImplCreator" />
+        <!--
+             Setting for Vizzini (the FireTV alexa client).
+            Enable the Vizzini being able to detect whether an application is integrated with
+            AlexaClientLibrary.
+        -->
+        <meta-data
+            android:name="com.amazon.alexa.vsk.clientlib.integrated_flag"
+            android:value="true" />
+        <meta-data
+            android:name="com.amazon.alexa.vsk.clientlib.version"
+            android:value="1.4.3" />
+
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary" />
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false" />
+
+        <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_display_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_LeakCanary.Base" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.squareup.leakcanary.internal.RequestStoragePermissionActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_storage_permission_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_Theme.Transparent" />
+    </application>
+
+</manifest>

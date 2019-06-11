@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Application/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/tomjoht/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.1.aar/db22df72f7fefe2f30f6eb9cb4932d97/res/values-hdpi/values-hdpi.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "235",
+                        "endLines": "8",
+                        "endColumns": "13",
+                        "endOffsets": "507"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+A copy of the License is located at
+
+    http://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+-->
+<resources>
+
+    <string translatable="false" name="app_name">Sample Alexa VSK Fire TV App</string>
+    <!-- The app's display name that should have a max of 15 characters
+         Currently used with recommendations on the Home Screen -->
+    <string translatable="false" name="app_name_short">AlexaFireTVApp</string>
+
+    <!-- App colors -->
+
+    <!-- The background color of the screens. -->
+    <color name="background">#22282E</color>
+    <!-- Used for card background -->
+    <color name="card_background">#2B2B2B</color>
+    <!-- Background color of the progress bar -->
+    <color name="playback_background_progress_bar">#FF373737</color>
+    <!-- Color of buffered progress bar -->
+    <color name="playback_buffered_progress">#FF5A5A5A</color>
+    <!-- Color of the progress bar -->
+    <color name="progress_bar">#99FFFFFF</color>
+    <!-- Color of splash screen spinning loader animation -->
+    <color name="spinner_color">#FFFFFFFF</color>
+    <!-- The color of button highlights and widgets. -->
+    <color name="accent">#EE962D</color>
+    <!-- FullContentBrowser:
+         The header's bar color (left-hand navigation bar). -->
+    <color name="browse_headers_bar">#0DFFFFFF</color>
+    <!-- Used for the text of a selected item's title and description.
+         Also used for button text, Splash screen text, and read more dialog text. -->
+    <color name="primary_text">#E6FFFFFF</color>
+    <!-- Used for the text on the card views and playback progress bar text. -->
+    <color name="secondary_text">#FFFFFFFF</color>
+    <!-- Used for the category titles and content subtitles -->
+    <color name="tertiary_text">#99FFFFFF</color>
+    <!-- End of App Colors -->
+
+    <!-- App Configurations -->
+
+    <!-- Terms of use file -->
+    <string translatable="false" name="terms_of_use_file">terms_of_use.html</string>
+    <!-- Content reload time in milliseconds -->
+    <integer name="time_to_reload_content">14400000</integer>
+    <!-- Is in-app purchase disabled? -->
+    <bool name="is_iap_disabled">true</bool>
+
+    <!-- End of App Configurations -->
+
+    <!-- Splash Screen Customization -->
+
+    <!-- Company logo to show on Splash Screen -->
+    <drawable name="splash_logo">@drawable/fire_app_builder_white</drawable>
+
+    <!-- End of Splash Screen Customization -->
+
+    <!-- Browse Customization -->
+
+    <!-- Company logo -->
+    <drawable name="company_logo">@drawable/fire_app_builder_white_2</drawable>
+    <!-- App icon -->
+    <drawable name="app_logo">@mipmap/ic_launcher</drawable>
+    <!-- App banner. Note: Used for Google Play Store -->
+    <drawable name="app_banner">@drawable/placeholder_banner</drawable>
+    <!-- Content preview window customization -->
+    <dimen name="content_image_height">350dp</dimen>
+    <dimen name="content_image_width">540dp</dimen>
+    <!-- Size of gradient fade for content preview window -->
+    <dimen name="content_image_gradient_size">100dp</dimen>
+    <!-- A grace period used when selecting recent records that have been started but not
+        finished. Measured in milliseconds. -->
+    <integer name="recent_grace_period">10000</integer>
+
+    <!-- End of Browse Customization -->
+
+    <!-- Button Customization -->
+
+    <!-- Background color for focused action button -->
+    <drawable name="action_button_focused">@drawable/btn_generic_focused</drawable>
+    <!-- Background color for normal state of action button -->
+    <drawable name="action_button_normal">@drawable/btn_normal</drawable>
+
+    <!-- End of Button Customization -->
+
+    <!-- Playback Overlay Customization -->
+
+    <!-- Hide More options status activation status-->
+    <bool name="hide_more_options">true</bool>
+
+    <!-- End of Playback Overlay Customization -->
+
+    <!-- Search Bar Customization -->
+
+    <!-- Icon to display inside of search orb -->
+    <drawable name="search_icon">@drawable/ic_search</drawable>
+    <!-- Background color of Search screen -->
+    <drawable name="search_background">@drawable/bg_gradient_search</drawable>
+
+    <!-- End of Search Bar Customization -->
+
+    <!-- Authentication Customization -->
+
+    <!-- The client token of the Facebook authentication service app -->
+    <string translatable="false" name="encrypted_authentication_client_token">YOUR_FB_APP_CLIENT_TOKEN</string>
+    <!-- App id of the Facebook authentication service app -->
+    <string translatable="false" name="encrypted_authentication_app_id">YOUR_FB_APP_ID</string>
+    <!-- PseudoRandom strings, used to generate random key for encrypting/decrypting Facebook
+         resources. These keys should always remain in sync with the keys used by
+         ResourceObfuscationStandaloneUtility -->
+    <string translatable="false" name="fb_key_1">fb_random_key_1</string>
+    <string translatable="false" name="fb_key_2">fb_random_key_2</string>
+    <string translatable="false" name="fb_key_3">fb_random_key_3</string>
+    <string translatable="false" name="fb_key_4">fb_random_key_4</string>
+    <string translatable="false" name="fb_key_5">fb_random_key_5</string>
+    <string translatable="false" name="fb_key_6">fb_random_key_6</string>
+    <!-- URL the end user must visit to authenticate their device -->
+    <string translatable="false" name="second_screen_login_instruction_line_2">Visit facebook.com/device</string>
+
+    <!-- End of Authentication Customization -->
+
+</resources>

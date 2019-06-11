@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logger_analytics_custom_tags">configurations/LoggerCustomAnalyticsTags.json
+    </string>
+</resources>

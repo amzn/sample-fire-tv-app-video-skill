@@ -1,0 +1,49 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+	package
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:16:11-47
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:1-25:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:15:11-69
+application
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:17:5-23:19
+	android:label
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:19:13-45
+	android:allowBackup
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:18:13-39
+meta-data#AMZNAP@PassThroughAds
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:21:9-22:95
+	android:value
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:22:20-93
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml:21:20-56
+uses-sdk
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PassThroughAdsComponent/src/main/AndroidManifest.xml

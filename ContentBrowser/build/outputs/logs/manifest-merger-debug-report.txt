@@ -1,0 +1,101 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+	package
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:16:11-54
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:1-51:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:15:11-69
+uses-permission#com.amazon.device.permission.COMRADE_CAPABILITIES
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:18:5-88
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:18:22-86
+uses-permission#android.permission.INTERNET
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:19:5-66
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:19:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:20:5-80
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:20:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:21:5-78
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:21:22-76
+application
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:23:5-49:19
+	android:allowBackup
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:23:18-44
+receiver#com.amazon.android.contentbrowser.helper.LauncherIntegrationBroadcastReceiver
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:27:9-32:20
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:27:19-111
+intent-filter#action:name:com.amazon.device.REQUEST_CAPABILITIES
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:28:13-31:29
+action#com.amazon.device.REQUEST_CAPABILITIES
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:29:17-30:26
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:29:25-78
+receiver#com.amazon.android.contentbrowser.recommendations.BootCompletedReceiver
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:34:9-43:20
+	android:enabled
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:36:17-39
+	android:exported
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:37:17-41
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:35:17-70
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:38:13-42:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:39:17-78
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:39:25-76
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:40:17-80
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:40:25-78
+action#android.intent.action.TIME_SET
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:41:17-72
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:41:25-70
+service#com.amazon.android.contentbrowser.recommendations.UpdateRecommendationsService
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:44:9-46:42
+	android:enabled
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:46:17-39
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:45:17-77
+service#com.amazon.android.contentbrowser.recommendations.DeleteRecommendationService
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:47:9-48:43
+	android:enabled
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:48:18-40
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml:47:18-77
+uses-sdk
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/src/main/AndroidManifest.xml

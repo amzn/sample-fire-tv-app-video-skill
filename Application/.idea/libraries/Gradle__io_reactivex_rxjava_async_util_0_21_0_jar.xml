@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.reactivex:rxjava-async-util:0.21.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava-async-util/0.21.0/46d17bf13427f275c25c22eaccbfb4a8da1da85a/rxjava-async-util-0.21.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava-async-util/0.21.0/5935533cb93c14d57e83df8bf9485a121dd39f2c/rxjava-async-util-0.21.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

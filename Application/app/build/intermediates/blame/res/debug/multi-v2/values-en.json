@@ -1,0 +1,96 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Application/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/PurchaseInterface/build/intermediates/packaged_res/debug/values-en/values-en.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "43",
+                        "endOffsets": "94"
+                    },
+                    "to": {
+                        "startLines": "26",
+                        "startColumns": "4",
+                        "startOffsets": "1655",
+                        "endColumns": "43",
+                        "endOffsets": "1694"
+                    }
+                },
+                {
+                    "source": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/TVUIComponent/lib/build/intermediates/packaged_res/debug/values-en/values-en.xml",
+                    "from": {
+                        "startLines": "2,9,10,11,12,13,14,15,17,18,19,20,21,22,23",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,346,402,446,495,548,619,697,824,882,924,976,1029,1091,1149",
+                        "endLines": "5,9,10,11,12,13,14,15,17,18,19,20,21,22,23",
+                        "endColumns": "12,55,43,48,52,70,77,64,57,41,51,52,61,57,51",
+                        "endOffsets": "218,397,441,490,543,614,692,757,877,919,971,1024,1086,1144,1196"
+                    },
+                    "to": {
+                        "startLines": "2,15,16,19,20,24,25,47,51,52,56,62,63,65,66",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,959,1015,1218,1267,1506,1577,3201,3418,3476,3806,4202,4255,4371,4429",
+                        "endLines": "5,15,16,19,20,24,25,47,51,52,56,62,63,65,66",
+                        "endColumns": "12,55,43,48,52,70,77,64,57,41,51,52,61,57,51",
+                        "endOffsets": "218,1010,1054,1262,1315,1572,1650,3261,3471,3513,3853,4250,4312,4424,4476"
+                    }
+                },
+                {
+                    "source": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Utils/build/intermediates/packaged_res/debug/values-en/values-en.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,249,413,469,527,573,623,687,782,862,931,1044,1090,1162,1250,1305,1359,1449,1497,1616,1724,1810,1953,2057,2165,2241,2313,2376,2437,2562",
+                        "endColumns": "193,163,55,57,45,49,63,94,79,68,112,45,71,87,54,53,89,47,118,107,85,142,103,107,75,71,62,60,71,53",
+                        "endOffsets": "244,408,464,522,568,618,682,777,857,926,1039,1085,1157,1245,1300,1354,1444,1492,1611,1719,1805,1948,2052,2160,2236,2308,2371,2432,2504,2611"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,14,17,18,21,27,28,29,30,31,32,33,34,35,36,37,42,46,53,54,55,57,58,59,61,64",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "223,417,581,637,695,909,1059,1123,1320,1699,1768,1881,1927,1999,2087,2142,2196,2286,2334,2453,2809,3058,3518,3622,3730,3858,3930,3993,4130,4317",
+                        "endColumns": "193,163,55,57,45,49,63,94,79,68,112,45,71,87,54,53,89,47,118,107,85,142,103,107,75,71,62,60,71,53",
+                        "endOffsets": "412,576,632,690,736,954,1118,1213,1395,1763,1876,1922,1994,2082,2137,2191,2281,2329,2448,2556,2890,3196,3617,3725,3801,3925,3988,4049,4197,4366"
+                    }
+                },
+                {
+                    "source": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/ContentBrowser/build/intermediates/packaged_res/debug/values-en/values-en.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,102,148,214,254,290,340,440,502,543,589,665,709,755,831,888,954,1000",
+                        "endColumns": "46,45,65,39,35,49,99,61,40,45,75,43,45,75,56,65,45,43",
+                        "endOffsets": "97,143,209,249,285,335,435,497,538,584,660,704,750,826,883,949,995,1039"
+                    },
+                    "to": {
+                        "startLines": "12,13,22,23,38,39,40,41,43,44,45,48,49,60,67,68,69,70",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "816,863,1400,1466,2561,2597,2647,2747,2895,2936,2982,3266,3310,4054,4481,4538,4604,4650",
+                        "endColumns": "46,45,65,39,35,49,99,61,40,45,75,43,45,75,56,65,45,43",
+                        "endOffsets": "858,904,1461,1501,2592,2642,2742,2804,2931,2977,3053,3305,3351,4125,4533,4599,4645,4689"
+                    }
+                },
+                {
+                    "source": "/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/Application/app/src/main/res/values-en/strings.xml",
+                    "from": {
+                        "startLines": "16,17",
+                        "startColumns": "2,2",
+                        "startOffsets": "611,684",
+                        "endColumns": "72,59",
+                        "endOffsets": "681,741"
+                    },
+                    "to": {
+                        "startLines": "11,50",
+                        "startColumns": "4,4",
+                        "startOffsets": "741,3356",
+                        "endColumns": "74,61",
+                        "endOffsets": "811,3413"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="basic_file_based_url_generator.config.file_path">configurations/BasicFileBasedUrlGeneratorConfig.json</string>
+    <string name="basic_file_downloader.config.file_path">configurations/BasicFileBasedDownloaderConfig.json</string>
+    <string name="basic_http_downloader.config.file_path">configurations/BasicHttpBasedDownloaderConfig.json</string>
+    <string name="basic_token_based_url_generator.config.file_path">configurations/BasicTokenBasedUrlGeneratorConfig.json</string>
+    <string name="data_loader_config_file">configurations/DataLoadManagerConfig.json</string>
+    <string name="download_data">download_data</string>
+    <string name="load_data">load_data</string>
+    <string name="task">task</string>
+</resources>

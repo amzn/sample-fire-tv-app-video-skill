@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="search_results">
+    <item quantity="one">「%2$s」の検索結果%1$d件:</item>
+    <item quantity="other">「%2$s」の検索結果%1$d件:</item>
+  </plurals>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"ホームへ移動"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s、%2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s、%2$s、%3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"上へ移動"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"その他のオプション"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"完了"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"すべて表示"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"アプリの選択"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"OFF"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ON"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"検索…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"検索キーワードを削除"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"検索キーワード"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"検索"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"検索キーワードを送信"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"音声検索"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"共有"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%sと共有"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"折りたたむ"</string>
+    <string name="authentication_error_message">詳細情報の認証中にエラーが発生しました\r\nもう一度情報を入力するか、ケーブルプロバイダーに連絡してこのコンテンツへのアクセス許可をリクエストしてください。</string>
+    <string name="authorization_error_message">このコンテンツの表示権限がありません。\r\nケーブルプロバイダーに連絡してこのコンテンツへのアクセス許可をリクエストしてください。</string>
+    <string name="auto_play_speed">スライドの速度</string>
+    <string name="btn_get_new_code">新しいコードを取得</string>
+    <string name="btn_submit">送信</string>
+    <string name="copyright">Copyright 2016. All Rights Reserved.</string>
+    <string name="daily_pass_1">デイリー</string>
+    <string name="daily_pass_2">パス</string>
+    <string name="dismiss_label">閉じる</string>
+    <string name="duration">%1$d:%2$02d:%3$02d</string>
+    <string name="episode">エピソード</string>
+    <string name="exit_app_label">アプリケーションを終了</string>
+    <string name="feed_error_message">サービスを使用できません。 後でもう一度お試しください。</string>
+    <string name="feed_loading">読み込み中</string>
+    <string name="feed_reloading">再読込中</string>
+    <string name="go_to_network_settings_label">ネットワーク設定画面を開く</string>
+    <string name="iap_error_dialog_title">購入エラー</string>
+    <string name="later">後で</string>
+    <string msgid="4541442045214207774" name="lb_control_display_fast_forward_multiplier">"%1$dX"</string>
+    <string msgid="3097220783222910245" name="lb_control_display_rewind_multiplier">"%1$dX"</string>
+    <string msgid="6133362019475930048" name="lb_playback_controls_closed_captioning_disable">"字幕を無効にする"</string>
+    <string msgid="2429655367176440226" name="lb_playback_controls_closed_captioning_enable">"字幕を有効にする"</string>
+    <string msgid="8569951318244687220" name="lb_playback_controls_fast_forward">"早送り"</string>
+    <string msgid="1058753672110224526" name="lb_playback_controls_fast_forward_multiplier">"早送り%1$dX"</string>
+    <string msgid="8637371582779057866" name="lb_playback_controls_high_quality_disable">"高品質を無効にする"</string>
+    <string msgid="202415780019335254" name="lb_playback_controls_high_quality_enable">"高品質を有効にする"</string>
+    <string msgid="2330770008796987655" name="lb_playback_controls_more_actions">"その他の操作"</string>
+    <string msgid="6189521112079849518" name="lb_playback_controls_pause">"一時停止"</string>
+    <string msgid="731953341987346903" name="lb_playback_controls_play">"再生"</string>
+    <string msgid="6730354406289599000" name="lb_playback_controls_repeat_all">"全曲を繰り返し"</string>
+    <string msgid="87476947476529036" name="lb_playback_controls_repeat_none">"繰り返しなし"</string>
+    <string msgid="3285202316452203619" name="lb_playback_controls_repeat_one">"1曲を繰り返し"</string>
+    <string msgid="2227196334132350684" name="lb_playback_controls_rewind">"巻き戻し"</string>
+    <string msgid="1640629531440849942" name="lb_playback_controls_rewind_multiplier">"巻き戻し%1$dX"</string>
+    <string msgid="8388150597335115226" name="lb_playback_controls_shuffle_disable">"シャッフルを無効にする"</string>
+    <string msgid="1099874107835264529" name="lb_playback_controls_shuffle_enable">"シャッフルを有効にする"</string>
+    <string msgid="2946499493161095772" name="lb_playback_controls_skip_next">"次の曲にスキップ"</string>
+    <string msgid="2326801832933178348" name="lb_playback_controls_skip_previous">"前の曲にスキップ"</string>
+    <string msgid="4498041193172964797" name="lb_playback_controls_thumb_down">"イマイチの選択を解除"</string>
+    <string msgid="2936020280629424365" name="lb_playback_controls_thumb_down_outline">"イマイチを選択"</string>
+    <string msgid="6530420347129222601" name="lb_playback_controls_thumb_up">"グッドの選択を解除"</string>
+    <string msgid="1577637924003500946" name="lb_playback_controls_thumb_up_outline">"グッドを選択"</string>
+    <string name="lb_search_bar_hint">@string/search_bar_hint</string>
+    <string name="lb_search_bar_hint_speech">@string/search_bar_hint</string>
+    <string msgid="1627103380996590035" name="lb_search_bar_hint_with_title">"<ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g>を検索"</string>
+    <string msgid="2712734639766312034" name="lb_search_bar_hint_with_title_speech">"<ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g>を音声検索"</string>
+    <string name="loading">読み込み中</string>
+    <string name="login_description">アカウントにログインします。</string>
+    <string name="login_dialog_description">ログインしていません。ビデオを選択して再生するにはログインしてください。</string>
+    <string name="login_label">ログイン</string>
+    <string name="logout_description">アカウントからログアウトします。</string>
+    <string name="logout_dialog_description">ログアウトしますか?</string>
+    <string name="logout_dialog_option_1">はい</string>
+    <string name="logout_dialog_option_2">いいえ</string>
+    <string name="logout_failure_message">ログアウトできませんでした。もう一度お試しください。</string>
+    <string name="logout_label">ログアウト</string>
+    <string name="logout_success_message">ログアウトしました。間もなく詳細ページが開きます。</string>
+    <string name="network_error_message">ネットワークがありません。後でもう一度お試しください。</string>
+    <string name="now">今すぐ</string>
+    <string name="ok">@android:string/ok</string>
+    <string name="optional_login_dialog_message">今すぐログインしてアプリを最大限にご活用ください。</string>
+    <string name="optional_login_dialog_title">ログイン</string>
+    <string msgid="5651268540267663887" name="orb_search_action">"検索操作"</string>
+    <string name="playback_error_message">再生できませんでした。もう一度お試しください。</string>
+    <string name="premium_1">プレミアムに</string>
+    <string name="premium_2">アップグレード</string>
+    <string name="recommended_contents_header">おすすめコンテンツ</string>
+    <string name="registration_code_error_message">登録コードの取得中にエラーが発生しました。このメッセージを閉じてもう一度お試しください。</string>
+    <string name="related_contents">おすすめコンテンツ</string>
+    <string name="resume_1">再生を</string>
+    <string name="resume_2">再開</string>
+    <string name="search_bar_hint">検索語を入力</string>
+    <string name="search_results">検索結果</string>
+    <string name="season">シーズン</string>
+    <string name="second_screen_login_instruction_line_1">コンピューターまたはモバイル端末を使用します。</string>
+    <string name="second_screen_login_instruction_line_3">以下のコード（大文字小文字を区別）を入力します。</string>
+    <string name="second_screen_login_instruction_line_4">読み込み中…</string>
+    <string name="settings_title">設定</string>
+    <string name="slideshow_description">スライドショーの速度を設定します。</string>
+    <string name="slideshow_label">スライドショーの設定</string>
+    <string name="slideshow_title">スライドショーの速度</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="subscription_expired">サービスの期限が切れました!</string>
+    <string name="terms_description">法律に関する通知を表示します。</string>
+    <string name="terms_title">利用規約</string>
+    <string name="time_remaining">残り時間: %s</string>
+    <string name="try_again_label">再試行</string>
+    <string name="video_subtitle">ビデオ副題</string>
+    <string name="video_title">ビデオタイトル</string>
+    <string name="watch_from_beginning_1">最初から</string>
+    <string name="watch_from_beginning_2">観る</string>
+    <string name="watch_now_1">今すぐ</string>
+    <string name="watch_now_2">観る</string>
+</resources>

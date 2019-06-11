@@ -1,0 +1,49 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+	package
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:16:11-48
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:1-26:12
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:15:11-69
+application
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:18:5-24:19
+	android:supportsRtl
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:20:13-39
+	android:allowBackup
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:19:13-39
+meta-data#AMZNAP@LoggerAnalytics
+ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:22:9-23:103
+	android:value
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:23:20-101
+	android:name
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml:22:20-57
+uses-sdk
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		ADDED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml
+		INJECTED from /Users/tomjoht/projects/Sample-fire-tv-app-video-skill/LoggerAnalyticsComponent/src/main/AndroidManifest.xml

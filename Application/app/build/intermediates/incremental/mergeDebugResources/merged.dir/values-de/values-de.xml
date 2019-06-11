@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="search_results">
+    <item quantity="one">%1$d Ergebnis für „%2$s“:</item>
+    <item quantity="other">%1$d Ergebnisse für „%2$s“:</item>
+  </plurals>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Zur Startseite"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s: %2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s: %3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Nach oben"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Weitere Optionen"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Fertig"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Alle ansehen"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"App auswählen"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"Aus"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"An"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Suchen…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Suchanfrage löschen"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Suchanfrage"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Suchen"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Suchanfrage senden"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Sprachsuche"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Freigeben für %s"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
+    <string name="authentication_error_message">Fehler bei der Authentifizierung Ihrer Details.\r\nBitte geben Sie Ihre Informationen erneut ein und kontaktieren Sie Ihren Anbieter, um Zugang zu diesem Inhalt zu erhalten.</string>
+    <string name="authorization_error_message">Sie sind nicht berechtigt, diesen Inhalt anzusehen.\r\nBitte kontaktieren Sie Ihren Anbieter, um Zugang zu diesem Inhalt zu erhalten.</string>
+    <string name="auto_play_speed">Präsentationsgeschwindigkeit</string>
+    <string name="btn_get_new_code">NEUEN CODE ANFORDERN</string>
+    <string name="btn_submit">SENDEN</string>
+    <string name="copyright">Copyright 2016. Alle Rechte vorbehalten.</string>
+    <string name="daily_pass_1">Tages</string>
+    <string name="daily_pass_2">pass</string>
+    <string name="dismiss_label">Verwerfen</string>
+    <string name="duration">%1$d:%2$02d:%3$02d</string>
+    <string name="episode">Folge</string>
+    <string name="exit_app_label">Anwendung verlassen</string>
+    <string name="feed_error_message">Dienst nicht verfügbar. Versuchen Sie es später erneut.</string>
+    <string name="feed_loading">Wird geladen</string>
+    <string name="feed_reloading">Wird neu geladen</string>
+    <string name="go_to_network_settings_label">Netzwerkeinstellungen besuchen</string>
+    <string name="iap_error_dialog_title">Fehler beim Kauf</string>
+    <string name="later">Später</string>
+    <string msgid="4541442045214207774" name="lb_control_display_fast_forward_multiplier">"%1$dx"</string>
+    <string msgid="3097220783222910245" name="lb_control_display_rewind_multiplier">"%1$dx"</string>
+    <string msgid="6133362019475930048" name="lb_playback_controls_closed_captioning_disable">"Untertitel deaktivieren"</string>
+    <string msgid="2429655367176440226" name="lb_playback_controls_closed_captioning_enable">"Untertitel aktivieren"</string>
+    <string msgid="8569951318244687220" name="lb_playback_controls_fast_forward">"Vorspulen"</string>
+    <string msgid="1058753672110224526" name="lb_playback_controls_fast_forward_multiplier">"Vorspulen %1$dx"</string>
+    <string msgid="8637371582779057866" name="lb_playback_controls_high_quality_disable">"Hohe Qualität deaktivieren"</string>
+    <string msgid="202415780019335254" name="lb_playback_controls_high_quality_enable">"Hohe Qualität aktivieren"</string>
+    <string msgid="2330770008796987655" name="lb_playback_controls_more_actions">"Weitere Aktionen"</string>
+    <string msgid="6189521112079849518" name="lb_playback_controls_pause">"Pausieren"</string>
+    <string msgid="731953341987346903" name="lb_playback_controls_play">"Wiedergabe"</string>
+    <string msgid="6730354406289599000" name="lb_playback_controls_repeat_all">"Alle wiederholen"</string>
+    <string msgid="87476947476529036" name="lb_playback_controls_repeat_none">"Keinen Titel wiederholen"</string>
+    <string msgid="3285202316452203619" name="lb_playback_controls_repeat_one">"Einen Titel wiederholen"</string>
+    <string msgid="2227196334132350684" name="lb_playback_controls_rewind">"Zurückspulen"</string>
+    <string msgid="1640629531440849942" name="lb_playback_controls_rewind_multiplier">"Zurückspulen %1$dx"</string>
+    <string msgid="8388150597335115226" name="lb_playback_controls_shuffle_disable">"Zufallsmix deaktivieren"</string>
+    <string msgid="1099874107835264529" name="lb_playback_controls_shuffle_enable">"Zufallsmix aktivieren"</string>
+    <string msgid="2946499493161095772" name="lb_playback_controls_skip_next">"Nächsten Titel überspringen"</string>
+    <string msgid="2326801832933178348" name="lb_playback_controls_skip_previous">"Vorherigen Titel überspringen"</string>
+    <string msgid="4498041193172964797" name="lb_playback_controls_thumb_down">"\"Mag ich nicht\" deaktivieren"</string>
+    <string msgid="2936020280629424365" name="lb_playback_controls_thumb_down_outline">"\"Mag ich nicht\" aktivieren"</string>
+    <string msgid="6530420347129222601" name="lb_playback_controls_thumb_up">"\"Mag ich\" deaktivieren"</string>
+    <string msgid="1577637924003500946" name="lb_playback_controls_thumb_up_outline">"\"Mag ich\" aktivieren"</string>
+    <string name="lb_search_bar_hint">@string/search_bar_hint</string>
+    <string name="lb_search_bar_hint_speech">@string/search_bar_hint</string>
+    <string msgid="1627103380996590035" name="lb_search_bar_hint_with_title">"In <ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g> suchen"</string>
+    <string msgid="2712734639766312034" name="lb_search_bar_hint_with_title_speech">"Sprechen, um in \"<ns1:g id="SEARCH_CONTEXT">%1$s</ns1:g>\" zu suchen"</string>
+    <string name="leak_canary_analysis_failed">Leak Analyse fehlgeschlagen</string>
+    <string name="leak_canary_class_has_leaked">%1$s hat %2$s geleaked</string>
+    <string name="leak_canary_could_not_save_text">LeakCanary konnte das Ergebnis der Analyse nicht speichern.</string>
+    <string name="leak_canary_could_not_save_title">Konnte Ergebnis nicht speichern.</string>
+    <string name="leak_canary_delete">Löschen</string>
+    <string name="leak_canary_delete_all">Alle löschen</string>
+    <string name="leak_canary_display_activity_label">Leaks</string>
+    <string name="leak_canary_excluded_row">[Ausgeschlossen] %s</string>
+    <string name="leak_canary_failure_report">"Bitte sende diesen Fehler an http://github.com/square/leakcanary\n"</string>
+    <string name="leak_canary_leak_excluded">[Ausgeschlossen] %1$s hat %2$s geleaked</string>
+    <string name="leak_canary_leak_list_title">Leaks in %s</string>
+    <string name="leak_canary_no_leak_text">Der GC war untätig.</string>
+    <string name="leak_canary_no_leak_title">Kein Leak gefunden</string>
+    <string name="leak_canary_notification_message">Für mehr Details hier klicken</string>
+    <string name="leak_canary_permission_notification_text">Hier klicken um Storage Berechtigung für %s zu aktivieren.</string>
+    <string name="leak_canary_permission_notification_title">Leak detektiert, benötige Berechtigung</string>
+    <string name="leak_canary_share_heap_dump">Heap Dump teilen</string>
+    <string name="leak_canary_share_leak">Info teilen</string>
+    <string name="leak_canary_share_with">Teilen mit…</string>
+    <string name="leak_canary_storage_permission_activity_label">Storage Berechtigung</string>
+    <string name="leak_canary_toast_heap_dump">Analysiere Speichert, die App wird einfrieren. Brrr.</string>
+    <string name="loading">Wird geladen</string>
+    <string name="login_description">Melden Sie sich bei Ihrem Konto an.</string>
+    <string name="login_dialog_description">Sie sind nicht angemeldet. Wählen und spielen Sie ein Video, um sich anzumelden.</string>
+    <string name="login_label">Anmelden</string>
+    <string name="logout_description">Melden Sie sich von Ihrem Konto ab.</string>
+    <string name="logout_dialog_description">Möchten Sie sich wirklich abmelden?</string>
+    <string name="logout_dialog_option_1">Ja</string>
+    <string name="logout_dialog_option_2">Nein</string>
+    <string name="logout_failure_message">Abmeldung nicht erfolgreich. Versuchen Sie es erneut.</string>
+    <string name="logout_label">Abmelden</string>
+    <string name="logout_success_message">Abmeldung erfolgreich. Sie sollten gleich zur Detailseite weitergeleitet werden.</string>
+    <string name="network_error_message">Netzwerk ist momentan nicht verfügbar. Versuchen Sie es später erneut.</string>
+    <string name="now">Jetzt</string>
+    <string name="ok">@android:string/ok</string>
+    <string name="optional_login_dialog_message">Anmelden, um Ihre App optimal zu nutzen.</string>
+    <string name="optional_login_dialog_title">Anmeldung</string>
+    <string msgid="5651268540267663887" name="orb_search_action">"Suchvorgang"</string>
+    <string name="playback_error_message">Wiedergabe fehlgeschlagen. Versuchen Sie es erneut.</string>
+    <string name="premium_1">Premium</string>
+    <string name="premium_2">starten</string>
+    <string name="recommended_contents_header">Empfohlener Inhalt</string>
+    <string name="registration_code_error_message">Fehler beim Abrufen des Anmeldecodes. Bitte schließen Sie diese Nachricht und versuchen es erneut.</string>
+    <string name="related_contents">Empfohlener Inhalt</string>
+    <string name="resume_1">Wiedergabe</string>
+    <string name="resume_2">fortsetzen</string>
+    <string name="search_bar_hint">Ich suche nach…</string>
+    <string name="search_results">Suchergebnisse</string>
+    <string name="season">Staffel</string>
+    <string name="second_screen_login_instruction_line_1">Gehen Sie zu Ihrem Computer oder Mobilgerät</string>
+    <string name="second_screen_login_instruction_line_3">Geben Sie den folgenden Code ein (Groß-/Kleinschreibung beachten):</string>
+    <string name="second_screen_login_instruction_line_4">Wird geladen…</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="slideshow_description">Geschwindigkeit der Bildschirmpräsentation einstellen.</string>
+    <string name="slideshow_label">Einstellung der Bildschirmpräsentation</string>
+    <string name="slideshow_title">Geschwindigkeit der Bildschirmpräsentation</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="subscription_expired">Ihre Abonnement ist abgelaufen!</string>
+    <string name="terms_description">Rechtliche Hinweise ansehen.</string>
+    <string name="terms_title">Nutzungsbedingungen</string>
+    <string name="time_remaining">Verbleibende Zeit: %s</string>
+    <string name="try_again_label">Erneut versuchen</string>
+    <string name="video_subtitle">Video-Untertitel</string>
+    <string name="video_title">Videotitel</string>
+    <string name="watch_from_beginning_1">Von Anfang an</string>
+    <string name="watch_from_beginning_2">ansehen</string>
+    <string name="watch_now_1">Jetzt</string>
+    <string name="watch_now_2">ansehen</string>
+</resources>

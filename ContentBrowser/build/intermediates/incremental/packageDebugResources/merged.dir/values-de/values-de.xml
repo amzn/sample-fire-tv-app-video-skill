@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="daily_pass_1">Tages</string>
+    <string name="daily_pass_2">pass</string>
+    <string name="iap_error_dialog_title">Fehler beim Kauf</string>
+    <string name="later">Später</string>
+    <string name="now">Jetzt</string>
+    <string name="ok">@android:string/ok</string>
+    <string name="optional_login_dialog_message">Anmelden, um Ihre App optimal zu nutzen.</string>
+    <string name="optional_login_dialog_title">Anmeldung</string>
+    <string name="premium_1">Premium</string>
+    <string name="premium_2">starten</string>
+    <string name="recommended_contents_header">Empfohlener Inhalt</string>
+    <string name="resume_1">Wiedergabe</string>
+    <string name="resume_2">fortsetzen</string>
+    <string name="subscription_expired">Ihre Abonnement ist abgelaufen!</string>
+    <string name="watch_from_beginning_1">Von Anfang an</string>
+    <string name="watch_from_beginning_2">ansehen</string>
+    <string name="watch_now_1">Jetzt</string>
+    <string name="watch_now_2">ansehen</string>
+</resources>

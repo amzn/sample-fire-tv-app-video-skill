@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/Sample-fire-tv-app-video-skill/TVUIComponent/lib/libs/amazon-device-messaging-1.0.1.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../TVUIComponent/lib/libs/amazon-device-messaging-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

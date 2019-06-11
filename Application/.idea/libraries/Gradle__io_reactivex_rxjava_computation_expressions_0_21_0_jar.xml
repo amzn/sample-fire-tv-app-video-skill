@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.reactivex:rxjava-computation-expressions:0.21.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava-computation-expressions/0.21.0/e2d7af9fc2c7d444d7d013f9354b123ce1bd0365/rxjava-computation-expressions-0.21.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava-computation-expressions/0.21.0/87b62da73ba0746e8cae620e38f697b210f1f17d/rxjava-computation-expressions-0.21.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
