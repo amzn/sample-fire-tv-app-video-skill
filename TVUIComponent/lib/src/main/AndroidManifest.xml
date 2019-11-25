@@ -56,10 +56,10 @@ permissions and limitations under the License.
         ADM messages.
     -->
     <permission
-        android:name="com.fireappbuilder.android.mycompany123.RECEIVE_ADM_MESSAGE"
+        android:name="com.fireappbuilder.android.calypsovsk.RECEIVE_ADM_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.fireappbuilder.android.mycompany123.RECEIVE_ADM_MESSAGE" />
+    <uses-permission android:name="com.fireappbuilder.android.calypsovsk.RECEIVE_ADM_MESSAGE" />
 
     <!-- This permission allows your app access to receive push notifications
     from ADM. -->
@@ -116,7 +116,7 @@ permissions and limitations under the License.
             <intent-filter>
                 <action android:name="com.amazon.device.messaging.intent.REGISTRATION" />
                 <action android:name="com.amazon.device.messaging.intent.RECEIVE" />
-                <category android:name="com.fireappbuilder.android.mycompany123" />
+                <category android:name="com.fireappbuilder.android.calypsovsk" />
             </intent-filter>
         </receiver>
 

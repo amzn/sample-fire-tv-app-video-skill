@@ -128,13 +128,13 @@ public class TenFootApp extends ContentBrowserApplication implements Application
 
         clientManager.initialize(getApplicationContext(),
                 ALEXA_SKILL_ID,
-                AlexaClientManager.SKILL_STAGE_LIVE,
+                AlexaClientManager.SKILL_STAGE_DEVELOPMENT,
                 capabilities);
 
         // (Optional) Enable the VSK client library so that VSK start auto-pairing in background
         // immediately which will enable your user use Voice service ASAP.
         // You can delay this step until active user signed-in to your application.
-        //clientManager.setAlexaEnabled(true);
+        clientManager.setAlexaEnabled(true);
     }
 
 
