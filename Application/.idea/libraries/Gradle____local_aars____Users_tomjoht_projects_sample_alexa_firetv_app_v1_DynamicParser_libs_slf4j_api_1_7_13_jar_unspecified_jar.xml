@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: __local_aars__:/Users/tomjoht/projects/sample-alexa-firetv-app-v1/DynamicParser/libs/slf4j-api-1.7.13.jar:unspecified@jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../DynamicParser/libs/slf4j-api-1.7.13.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
