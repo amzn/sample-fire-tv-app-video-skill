@@ -1,21 +1,12 @@
-/*
- * Copyright (C) 2017 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
  */
 
 package com.example.vskfiretv;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +18,7 @@ import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
+import androidx.leanback.widget.ObjectAdapter;
 import androidx.leanback.widget.OnItemViewClickedListener;
 import androidx.leanback.widget.OnItemViewSelectedListener;
 import androidx.leanback.widget.Presenter;
@@ -37,12 +29,17 @@ import androidx.core.content.ContextCompat;
 
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amazon.alexa.vsk.clientlib.AlexaClientManager;
+import com.amazon.alexauicontroller.Element;
+import com.amazon.alexauicontroller.ElementWithChildren;
+import com.amazon.alexauicontroller.EntityType;
+import com.amazon.alexauicontroller.Scene;
+import com.amazon.alexauicontroller.UIAction;
+import com.amazon.alexauicontroller.stateproperties.FocusedUIElement;
+import com.amazon.alexauicontroller.stateproperties.UIElements;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -50,18 +47,31 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.example.vskfiretv.utils.UIElementUtil;
 
+import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainFragment extends BrowseFragment {
+import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATOR_ENTITY_ID;
+import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATOR_TYPE;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ACTION;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_ID;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_TYPE;
+import static com.example.vskfiretv.utils.UIElementUtil.getUIElement;
+import static com.example.vskfiretv.utils.UIElementUtil.getUIStateJSON;
+
+public class MainFragment extends BrowseFragment implements MainActivity.UIElementAction, MainActivity.MediaDetailsAction {
+    public static final String HOME_BROWSER_SCENE_IDENTIFIER = "home-browser-scene-000";
+
     private static final String TAG = "MainFragment";
 
     private static final int BACKGROUND_UPDATE_DELAY = 300;
-    private static final int GRID_ITEM_WIDTH = 200;
-    private static final int GRID_ITEM_HEIGHT = 200;
     private static final int NUM_ROWS = 2;
     private static final int NUM_COLS = 4;
 
@@ -73,8 +83,8 @@ public class MainFragment extends BrowseFragment {
     private BackgroundManager mBackgroundManager;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate");
+    public void onActivityCreated(final Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate");
         super.onActivityCreated(savedInstanceState);
 
         prepareBackgroundManager();
@@ -84,93 +94,119 @@ public class MainFragment extends BrowseFragment {
         loadRows();
 
         setupEventListeners();
+
+        ((MainActivity) getActivity()).setUiElementAction(this);
+        ((MainActivity) getActivity()).setMediaDetailsAction(this);
+    }
+
+    private Object getItem(final ArrayObjectAdapter rowsAdapter, final String receivedElementId, final EntityType receivedElementType) {
+
+        if (EntityType.AMAZON_ITEM_LIST.equals(receivedElementType)) {
+            for (int i = 0; i < rowsAdapter.size(); i++) {
+                final ListRow listRow = (ListRow) rowsAdapter.get(i);
+                final Element currentListRowElement = getUIElement(listRow);
+                if (currentListRowElement.getElementId() != null &&
+                        currentListRowElement.getElementId().equals(receivedElementId)) {
+                    return listRow;
+                }
+            }
+        } else if (EntityType.AMAZON_VIDEO_OBJECT.equals(receivedElementType)) {
+            for (int i = 0; i < rowsAdapter.size(); i++) {
+                final ListRow listRow = (ListRow) rowsAdapter.get(i);
+                final ObjectAdapter listRowAdapter = listRow.getAdapter();
+                for (int j = 0; j < listRowAdapter.size(); j++) {
+                    final Movie movie = (Movie) listRowAdapter.get(j);
+                    final Element currentMovieElement = getUIElement(movie);
+                    if (currentMovieElement.getElementId() != null && currentMovieElement.getElementId().equals(receivedElementId)) {
+                        return movie;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (null != mBackgroundTimer) {
-            Log.d(TAG, "onDestroy: " + mBackgroundTimer.toString());
+            Log.d(TAG, MessageFormat.format("onDestroy: {0}", mBackgroundTimer.toString()));
             mBackgroundTimer.cancel();
         }
     }
 
     private void loadRows() {
-        List<Movie> list = MovieList.setupMovies();
-        ArrayObjectAdapter rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-        CardPresenter cardPresenter = new CardPresenter();
+        final List<Movie> list = MovieList.setupMovies();
+        final ArrayObjectAdapter rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        final CardPresenter cardPresenter = new CardPresenter();
 
-        int i;
-        for (i = 0; i < NUM_ROWS; i++) {
+        int movieOrdinal = 0;
+        for (int i = 0; i < NUM_ROWS; i++) {
             if (i != 0) {
                 Collections.shuffle(list);
             }
-            ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(cardPresenter);
+            final ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(cardPresenter);
             for (int j = 0; j < NUM_COLS; j++) {
-                listRowAdapter.add(list.get(j % 5));
+                ++movieOrdinal;
+                final Movie movie = list.get(j % 5);
+                final Movie clonedMovie = (Movie) movie.clone();
+                clonedMovie.setOrdinal(movieOrdinal);
+                listRowAdapter.add(clonedMovie);
             }
-            HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i]);
+            final HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i]);
             rowsAdapter.add(new ListRow(header, listRowAdapter));
         }
-
-        //Adds a preferences row, not needed for VSK sample
-        //HeaderItem gridHeader = new HeaderItem(i, "PREFERENCES");
-
-        //GridItemPresenter mGridPresenter = new GridItemPresenter();
-        //ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
-        //gridRowAdapter.add(getResources().getString(R.string.grid_view));
-        //gridRowAdapter.add(getString(R.string.error_fragment));
-        //gridRowAdapter.add(getResources().getString(R.string.personal_settings));
-        //rowsAdapter.add(new ListRow(gridHeader, gridRowAdapter));
 
         setAdapter(rowsAdapter);
     }
 
-    public void displaySearchResults(String searchTerm, JsonElement searchPayload){
-        Log.d(TAG, "TODO: Show results from your catalog matching: " + searchTerm);
-        Log.d(TAG, "Search Payload: " + searchPayload);
+    public void displaySearchResults(final String searchTerm, final JsonElement searchPayload){
+        Log.d(TAG, MessageFormat.format("TODO: Show results from your catalog matching: {0}", searchTerm));
+        Log.d(TAG, MessageFormat.format("Search Payload: {0}", searchPayload));
 
         setTitle(getString(R.string.search_results) + " " + searchTerm);
 
         Toast.makeText(getActivity(), "Searching for '" + searchTerm + "'", Toast.LENGTH_LONG)
                 .show();
 
-        JsonElement jsonTree = searchPayload;
-        JsonArray jSearchArray = jsonTree.getAsJsonArray();
+        final JsonElement jsonTree = searchPayload;
+        final JsonArray jSearchArray = jsonTree.getAsJsonArray();
 
-        ArrayObjectAdapter rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-        CardPresenter cardPresenter = new CardPresenter();
-        List<Movie> movieList = MovieList.getList();
-        ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(cardPresenter);
+        final ArrayObjectAdapter rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        final CardPresenter cardPresenter = new CardPresenter();
+        final List<Movie> movieList = MovieList.getList();
+        final ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
+        int movieOrdinal = 0;
         for (JsonElement e : jSearchArray) {
 
-            JsonObject jItem = e.getAsJsonObject().get("item").getAsJsonObject();
-            String sourceEntityName = jItem.get("title").getAsString();
-            String searchResultMovieID = jItem.get("movie_id").getAsString();
+            final JsonObject jItem = e.getAsJsonObject().get("item").getAsJsonObject();
+            final String sourceEntityName = jItem.get("title").getAsString();
+            final String searchResultMovieID = jItem.get("movie_id").getAsString();
 
             for (int j = 0; j < movieList.size(); j++) {
-
-                Movie thisMovie = movieList.get(j);
-                String thisMovieID = thisMovie.getMovieId();
-                int var1 = searchResultMovieID.compareTo( thisMovieID );
+                final Movie thisMovie = movieList.get(j);
+                final String thisMovieID = thisMovie.getMovieId();
+                final int var1 = searchResultMovieID.compareTo( thisMovieID );
                 if (var1 == 0) {
-                    listRowAdapter.add(thisMovie);
-                    Log.d(TAG, "Adding movie " + thisMovie.getTitle());
+                    ++movieOrdinal;
+                    final Movie clonedMovie = (Movie) thisMovie.clone();
+                    clonedMovie.setOrdinal(movieOrdinal);
+                    listRowAdapter.add(clonedMovie);
+                    Log.d(TAG, MessageFormat.format("Adding movie {0}", thisMovie.getTitle()));
                 }
             }
 
             Log.d(TAG, sourceEntityName);
         }
 
-        HeaderItem header = new HeaderItem(3, "Search Results");
+        final HeaderItem header = new HeaderItem(3, "Search Results");
         rowsAdapter.add(new ListRow(header, listRowAdapter));
         setAdapter(rowsAdapter);
 
     }
 
     private void prepareBackgroundManager() {
-
         mBackgroundManager = BackgroundManager.getInstance(getActivity());
         mBackgroundManager.attach(getActivity().getWindow());
 
@@ -180,8 +216,6 @@ public class MainFragment extends BrowseFragment {
     }
 
     private void setupUIElements() {
-        // setBadgeDrawable(getActivity().getResources().getDrawable(
-        // R.drawable.videos_by_google_banner));
         setTitle(getString(R.string.browse_title)); // Badge, when set, takes precedent
         // over title
         setHeadersState(HEADERS_ENABLED);
@@ -207,9 +241,9 @@ public class MainFragment extends BrowseFragment {
         setOnItemViewSelectedListener(new ItemViewSelectedListener());
     }
 
-    private void updateBackground(String uri) {
-        int width = mMetrics.widthPixels;
-        int height = mMetrics.heightPixels;
+    private void updateBackground(final String uri) {
+        final int width = mMetrics.widthPixels;
+        final int height = mMetrics.heightPixels;
         Glide.with(getActivity())
                 .load(uri)
                 .centerCrop()
@@ -233,23 +267,94 @@ public class MainFragment extends BrowseFragment {
         mBackgroundTimer.schedule(new UpdateBackgroundTask(), BACKGROUND_UPDATE_DELAY);
     }
 
-    private final class ItemViewClickedListener implements OnItemViewClickedListener {
-        @Override
-        public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
-                                  RowPresenter.ViewHolder rowViewHolder, Row row) {
+    @Override
+    public void onUIElementAction(final Bundle bundle) {
+            final String elementId = (String) bundle.getSerializable(EXTRA_UI_CONTROLLER_ELEMENT_ID);
+            final EntityType entityType = (EntityType) bundle.getSerializable(EXTRA_UI_CONTROLLER_ELEMENT_TYPE);
+            final UIAction uiAction = (UIAction) bundle.getSerializable(EXTRA_UI_CONTROLLER_ACTION);
+
+            final ArrayObjectAdapter rowsAdapter = (ArrayObjectAdapter) getAdapter();
+            final Object item = getItem(rowsAdapter, elementId, entityType);
+
+            if (item == null) {
+                Log.e(TAG, MessageFormat.format("No matching item for the received UI Controller elementId: {0}", elementId));
+                return;
+            }
 
             if (item instanceof Movie) {
-                Movie movie = (Movie) item;
-                Log.d(TAG, "Item: " + item.toString());
-                Intent intent = new Intent(getActivity(), DetailsActivity.class);
-                intent.putExtra(DetailsActivity.MOVIE, movie);
+                applyUIControllerActionOnMovie((Movie) item, uiAction);
+            } else if (item instanceof ListRow) {
+                applyUIControllerActionOnListRow((ListRow) item, uiAction);
+            } else {
+                Log.e(TAG, MessageFormat.format("Unknown item {0}, cannot process the UI Controller action", item));
+            }
+    }
 
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        getActivity(),
-                        ((ImageCardView) itemViewHolder.view).getMainImageView(),
-                        DetailsActivity.SHARED_ELEMENT_NAME)
-                        .toBundle();
-                getActivity().startActivity(intent, bundle);
+    private void applyUIControllerActionOnMovie(final Movie movie, final UIAction uiAction) {
+        switch (uiAction) {
+            case SELECT:
+                selectMovie(movie,  null);
+                break;
+            default:
+                Log.e(TAG, MessageFormat.format("Received uiAction type: {0} cannot be supported for Movie: {1}", uiAction, movie.getTitle()));
+        }
+    }
+
+    private void applyUIControllerActionOnListRow(final ListRow listRow, final UIAction uiAction) {
+        switch (uiAction) {
+            case SELECT:
+                setSelectedPosition((int)listRow.getId());
+                break;
+            case EXPAND:
+                startHeadersTransition(false);
+                break;
+            default:
+                Log.e(TAG, MessageFormat.format("Received uiAction type: {0} cannot be supported for ListRow: {1}",
+                        uiAction, listRow.getHeaderItem().getName()));
+        }
+    }
+
+    @Override
+    public void onMediaDetailsAction(final Bundle bundle) {
+        final String type = (String) bundle.getSerializable(EXTRA_MEDIA_DETAILS_NAVIGATOR_TYPE);
+        final String entityId = (String) bundle.getSerializable(EXTRA_MEDIA_DETAILS_NAVIGATOR_ENTITY_ID);
+
+        // Determines which media to display based off properties of provided entity
+        if ("Video".equals(type)) {
+            Log.d(TAG, "TODO: Implement this according to the videos used in your app");
+            // Note that the sample app only uses title matching on the value to select the media to display;
+            // externalIds values are not used here.
+
+            // Retrieves items on the screen to select media to display to the user
+            final ArrayObjectAdapter rowsAdapter = (ArrayObjectAdapter) getAdapter();
+            for (int i = 0; i < rowsAdapter.size(); i++) {
+                final ListRow listRow = (ListRow) rowsAdapter.get(i);
+                final ObjectAdapter listRowAdapter = listRow.getAdapter();
+                for (int j = 0; j < listRowAdapter.size(); j++) {
+                    final Movie movie = (Movie) listRowAdapter.get(j);
+                    if (movie != null) {
+                        final String movieExternalId = UIElementUtil.EXTERNAL_ID_VALUE_PREFIX_FOR_MOVIE + movie.getId();
+                        if (Objects.equals(entityId, movieExternalId)) {
+                            applyUIControllerActionOnMovie(movie, UIAction.SELECT);
+                        }
+                    }
+                }
+            }
+        } else if ("App".equals(type)) {
+            // Sample app does not support App functionality, implement your own logic for App case behavior
+            Log.d(TAG, "TODO: Implement App case behavior");
+        } else {
+            Log.d(TAG, "TODO: Implement base case behavior");
+        }
+    }
+
+    private final class ItemViewClickedListener implements OnItemViewClickedListener {
+        @Override
+        public void onItemClicked(final Presenter.ViewHolder itemViewHolder, final Object item,
+                                  final RowPresenter.ViewHolder rowViewHolder, final Row row) {
+
+            if (item instanceof Movie) {
+                 selectMovie((Movie) item, itemViewHolder);
             } else if (item instanceof String) {
                 if (((String) item).contains(getString(R.string.error_fragment))) {
                     Intent intent = new Intent(getActivity(), BrowseErrorActivity.class);
@@ -261,6 +366,21 @@ public class MainFragment extends BrowseFragment {
         }
     }
 
+    private void selectMovie(final Movie movie, final Presenter.ViewHolder itemViewHolder) {
+        final Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        intent.putExtra(DetailsActivity.MOVIE, movie);
+
+        Bundle bundle = null;
+        if (itemViewHolder != null) {
+            bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    getActivity(),
+                    ((ImageCardView) itemViewHolder.view).getMainImageView(),
+                    DetailsActivity.SHARED_ELEMENT_NAME)
+                    .toBundle();
+        }
+        getActivity().startActivity(intent, bundle);
+    }
+
     private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
         @Override
         public void onItemSelected(
@@ -268,11 +388,71 @@ public class MainFragment extends BrowseFragment {
                 Object item,
                 RowPresenter.ViewHolder rowViewHolder,
                 Row row) {
+            Log.d(TAG, MessageFormat.format("Current selected item is {0}", item));
             if (item instanceof Movie) {
                 mBackgroundUri = ((Movie) item).getBackgroundImageUrl();
                 startBackgroundTimer();
             }
+
+            if (item != null && row != null) {
+                Log.d(TAG, "Processing the current selected item and reporting the current UI state.");
+                reportCurrentUIState(item);
+            }
+            Log.d(TAG, "Finished processing the current item");
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final RowPresenter.ViewHolder selectedViewHolder = getSelectedRowViewHolder();
+
+        if(selectedViewHolder == null) {
+            return;
+        }
+
+        final Object selectedItem = selectedViewHolder.getSelectedItem();
+        Log.d(TAG, MessageFormat.format("Current selected item is {0}", selectedItem));
+
+        if (selectedItem != null) {
+            Log.d(TAG, "Processing the current selected item and reporting the current UI state.");
+            reportCurrentUIState(selectedItem);
+        }
+        Log.d(TAG, "Finished processing the current item");
+    }
+
+    /**
+     * Reports the ui state of the current home browser screen
+     * @param selectedItem the selected item which is in focus on the current home browser screen
+     */
+    private void reportCurrentUIState(final Object selectedItem) {
+        final ArrayObjectAdapter rowsAdapter = (ArrayObjectAdapter) getAdapter();
+        final List<ElementWithChildren> elements = getUIElements(rowsAdapter);
+
+        final Movie currentMovieSelected = (Movie) selectedItem;
+        final Element focusedElement = getUIElement(currentMovieSelected);
+
+        Log.d(TAG, MessageFormat.format("Focused movie element id is {0}", focusedElement.getElementId()));
+
+        final Scene scene = new Scene.Builder().withSceneId(HOME_BROWSER_SCENE_IDENTIFIER).build();
+        final UIElements uiElements = new UIElements.Builder().withScene(scene).withElements(elements).build();
+        final FocusedUIElement focusedUIElement = new FocusedUIElement.Builder().withScene(scene).withElement(focusedElement).build();
+
+        final Map<String, String> currentUIStateJSON = getUIStateJSON(uiElements, focusedUIElement);
+
+        Log.d(TAG, MessageFormat.format("Reporting home screen UI State to Alexa: {0}", currentUIStateJSON));
+        AlexaClientManager.getSharedInstance().setUIState(currentUIStateJSON);
+        Log.i(TAG, "Finished reporting home screen UI State to Alexa.");
+    }
+
+    private List<ElementWithChildren> getUIElements(final ObjectAdapter rowsAdapter) {
+        final List<ElementWithChildren> elements = new ArrayList<>();
+        for (int i = 0; i < rowsAdapter.size(); i++) {
+            final ListRow listRow = (ListRow) rowsAdapter.get(i);
+            final ElementWithChildren listRowElement = getUIElement(listRow);
+            elements.add(listRowElement);
+        }
+        return elements;
     }
 
     private class UpdateBackgroundTask extends TimerTask {
@@ -285,30 +465,6 @@ public class MainFragment extends BrowseFragment {
                     updateBackground(mBackgroundUri);
                 }
             });
-        }
-    }
-
-    private class GridItemPresenter extends Presenter {
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent) {
-            TextView view = new TextView(parent.getContext());
-            view.setLayoutParams(new ViewGroup.LayoutParams(GRID_ITEM_WIDTH, GRID_ITEM_HEIGHT));
-            view.setFocusable(true);
-            view.setFocusableInTouchMode(true);
-            view.setBackgroundColor(
-                    ContextCompat.getColor(getContext(), R.color.default_background));
-            view.setTextColor(Color.WHITE);
-            view.setGravity(Gravity.CENTER);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder viewHolder, Object item) {
-            ((TextView) viewHolder.view).setText((String) item);
-        }
-
-        @Override
-        public void onUnbindViewHolder(ViewHolder viewHolder) {
         }
     }
 

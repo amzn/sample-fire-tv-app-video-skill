@@ -1,3 +1,8 @@
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+ */
 
 package com.example.vskfiretv.data;
 
@@ -52,6 +57,10 @@ public class ExternalIds implements Parcelable
     @SerializedName("gti")
     @Expose
     private String gti;
+    @SerializedName("entityId")
+    @Expose
+    private String entityId;
+
     public final static Creator<ExternalIds> CREATOR = new Creator<ExternalIds>() {
 
 
@@ -84,6 +93,7 @@ public class ExternalIds implements Parcelable
         this.avcVendingGb = ((String) in.readValue((String.class.getClassLoader())));
         this.ontvDe = ((String) in.readValue((String.class.getClassLoader())));
         this.gti = ((String) in.readValue((String.class.getClassLoader())));
+        this.entityId = ((String) in.readValue((String.class.getClassLoader())));
     }
 
     public ExternalIds() {
@@ -201,6 +211,10 @@ public class ExternalIds implements Parcelable
         this.gti = gti;
     }
 
+    public String getEntityId() { return entityId; }
+
+    public void setEntityId(String entityId) { this.entityId = entityId; }
+
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(avcVendingDe);
         dest.writeValue(eNTITYID);
@@ -216,10 +230,31 @@ public class ExternalIds implements Parcelable
         dest.writeValue(avcVendingGb);
         dest.writeValue(ontvDe);
         dest.writeValue(gti);
+        dest.writeValue(entityId);
     }
 
     public int describeContents() {
         return  0;
     }
 
+    @Override
+    public String toString() {
+        return "ExternalIds{" +
+                "avc_vending_de=" + avcVendingDe +
+                "ENTITY_ID=" + eNTITYID +
+                "avc_vending_us=" + avcVendingUs +
+                "avc_vending_jp=" + avcVendingJp +
+                "netflix_jp=" + netflixJp +
+                "netflix_de=" + netflixDe +
+                "imdb=" + imdb +
+                "netflix_gb=" + netflixGb +
+                "ontv=" + ontv +
+                "netflix_us=" + netflixUs +
+                "tms=" + tms +
+                "avc_vending_gb=" + avcVendingGb +
+                "ontv_de=" + ontvDe +
+                "gti=" + gti +
+                "entityId=" + entityId +
+                '}';
+    }
 }

@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-//    signingConfigs {
-//        firetv {
-//            storeFile file('/Users/yourname/path/to/androidkeys.jks')
-//            storePassword var
-//            keyPassword var
-//            keyAlias = 'yourandroidkeyalias'
-//        }
-//    }
+    signingConfigs {
+        firetv {
+            storeFile file('/Users/yourname/path/to/androidkeys.jks')
+            storePassword var
+            keyAlias var
+            keyPassword 'yourandroidkeyalias'
+        }
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -22,10 +23,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.firetv
+            // signingConfig signingConfigs.firetv
         }
         debug {
-//        signingConfig signingConfigs.firetv
+            // signingConfig signingConfigs.firetv
         }
     }
 }
@@ -37,6 +38,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation project(path: ':AlexaClientLib')
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 
     compileOnly files('libs/amazon-device-messaging-1.1.0.jar')
 }

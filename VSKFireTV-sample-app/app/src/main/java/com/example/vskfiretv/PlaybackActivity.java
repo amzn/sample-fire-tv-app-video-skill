@@ -1,15 +1,7 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
  */
 
 package com.example.vskfiretv;
@@ -27,7 +19,7 @@ public class PlaybackActivity extends FragmentActivity {
     protected FireTVApp myFireTVApp;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         myFireTVApp = (FireTVApp) this.getApplicationContext();
         myFireTVApp.setCurrentActivity(this);
 
@@ -41,41 +33,39 @@ public class PlaybackActivity extends FragmentActivity {
     }
 
     public void PauseMovie(){
-        PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
+        final PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
                 getSupportFragmentManager().findFragmentByTag("PlaybackVideoFragment");
         fragmentDemo.getPlayer().pause();
     }
 
     public void UnpauseMovie(){
-        PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
+        final PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
                 getSupportFragmentManager().findFragmentByTag("PlaybackVideoFragment");
         fragmentDemo.getPlayer().play();
     }
 
     public void RewindMovie(){
-        PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
+        final PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
                 getSupportFragmentManager().findFragmentByTag("PlaybackVideoFragment");
         fragmentDemo.getPlayer().seekTo(0);
     }
 
-    public void SeekMovie(Long seekTime){
-        PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
+    public void SeekMovie(final Long seekTime){
+        final PlaybackVideoFragment fragmentDemo = (PlaybackVideoFragment)
                 getSupportFragmentManager().findFragmentByTag("PlaybackVideoFragment");
-        Long curPos = fragmentDemo.getPlayer().getCurrentPosition();
-        Long movieLength = fragmentDemo.getPlayer().getDuration();
-        //Log.d("Playback", "SeekMovie curPos:" + curPos + "  duration:" + movieLength);
+        final Long curPos = fragmentDemo.getPlayer().getCurrentPosition();
+        final Long movieLength = fragmentDemo.getPlayer().getDuration();
 
         Long seekPos = curPos + seekTime;
 
-        if(seekPos > movieLength){
+        if (seekPos > movieLength){
             seekPos = movieLength - 10000;
         }
 
-        if(seekPos < 0){
+        if (seekPos < 0){
             seekPos = 0L;
         }
 
-        //Log.d("Playback", "SeekTime: " + seekPos);
         fragmentDemo.getPlayer().seekTo(seekPos);
     }
 
@@ -94,7 +84,7 @@ public class PlaybackActivity extends FragmentActivity {
     }
 
     private void clearReferences(){
-        Activity currActivity = myFireTVApp.getCurrentActivity();
+        final Activity currActivity = myFireTVApp.getCurrentActivity();
         if (this.equals(currActivity))
             myFireTVApp.setCurrentActivity(null);
     }

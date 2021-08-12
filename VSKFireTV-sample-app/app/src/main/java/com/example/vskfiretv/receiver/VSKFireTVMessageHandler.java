@@ -1,3 +1,9 @@
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+ */
+
 package com.example.vskfiretv.receiver;
 
 import android.app.Activity;
@@ -5,7 +11,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
 import com.amazon.alexa.vsk.clientlib.AlexaClientManager;
+import com.amazon.alexauicontroller.Element;
+import com.amazon.alexauicontroller.Scene;
+import com.amazon.alexauicontroller.UIAction;
 import com.amazon.device.messaging.ADMMessageHandlerBase;
 import com.amazon.device.messaging.ADMMessageReceiver;
 import com.example.vskfiretv.DetailsActivity;
@@ -15,11 +25,29 @@ import com.example.vskfiretv.Movie;
 import com.example.vskfiretv.MovieList;
 import com.example.vskfiretv.PlaybackActivity;
 import com.example.vskfiretv.R;
+import com.example.vskfiretv.data.ActionOnUIElement;
 import com.example.vskfiretv.data.Directive;
+import com.example.vskfiretv.data.Entity;
+import com.example.vskfiretv.data.ExternalIds;
+import com.example.vskfiretv.data.MediaDetailsElement;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.example.vskfiretv.utils.UIElementUtil;
+
+import java.text.MessageFormat;
+
+import static com.example.vskfiretv.MainFragment.HOME_BROWSER_SCENE_IDENTIFIER;
+import static com.example.vskfiretv.VideoDetailsFragment.VIDEO_DETAIL_SCENE_IDENTIFIER;
+import static com.example.vskfiretv.utils.Constants.ACTION_ON_UI_ELEMENT;
+import static com.example.vskfiretv.utils.Constants.ACTION_ON_MEDIA_DETAILS;
+import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATOR_ENTITY_ID;
+import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATOR_TYPE;
+import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATOR_VALUE;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ACTION;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_ID;
+import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_TYPE;
 
 public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
 
@@ -50,7 +78,7 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
         // in length.
 
         // You have to provide the retrieved ADM registration Id to the Alexa Client library.
-        Log.d(TAG, "ADM RegistrationId: " + newRegistrationId);
+        Log.d(TAG, MessageFormat.format("ADM RegistrationId: {0}", newRegistrationId));
         // Provide the acquired ADM registration ID.
         AlexaClientManager.getSharedInstance().setDownChannelReady(true, newRegistrationId);
     }
@@ -72,7 +100,7 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
     protected void onMessage(final Intent intent) {
         // Extract the message content from the set of extras attached to
         // the com.amazon.device.messaging.intent.RECEIVE intent.
-        Log.d(TAG, "Recieved a message from ADM: " + intent.toString());
+        Log.d(TAG, MessageFormat.format("Recieved a message from ADM: {0}", intent.toString()));
 
         // Create strings to access the message and timeStamp fields from the JSON data.
         final String msgKey = getString(R.string.json_data_msg_key);
@@ -88,33 +116,35 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
         // ADM makes no guarantees about delivery or the order of messages.
         // Due to varying network conditions, messages may be delivered more than once.
         // Your app must be able to handle instances of duplicate messages.
+
         final String msg = extras.getString(msgKey);
+
         final String time = extras.getString(timeKey);
 
-        Gson gson = new Gson();
-        Directive directive = gson.fromJson(msg, Directive.class);
+        final Gson gson = UIElementUtil.getGson();
+        final Directive directive = gson.fromJson(msg, Directive.class);
 
-        JsonParser jsonParser = new JsonParser();
-        JsonElement jsonTree = jsonParser.parse(msg);
+        final JsonParser jsonParser = new JsonParser();
+        final JsonElement jsonTree = jsonParser.parse(msg);
 
-        Log.d(TAG, "onMessage: msg" + msg);
-        Log.d(TAG, "onMessage: directive: " + directive.getDirective().getHeader().getName());
+        Log.d(TAG, MessageFormat.format("onMessage: msg: {0}", msg));
+        Log.d(TAG, MessageFormat.format("onMessage: directive: {0}", directive.getDirective().getHeader().getName()));
 
         // Most messages have a payload/entities structure, but some don't!
 
         if (directive != null) {
-            String directiveName = directive.getDirective().getHeader().getName();
+            final String directiveName = directive.getDirective().getHeader().getName();
 
             if ("SearchAndPlay".equals(directiveName)) {
-                Movie firstMovie = MovieList.getList().get(0);
-                String movieName = firstMovie.getTitle();
-                Log.d(TAG, "Playing MOVIE " + movieName);
+                final Movie firstMovie = MovieList.getList().get(0);
+                final String movieName = firstMovie.getTitle();
+                Log.d(TAG, MessageFormat.format("Playing MOVIE {0}", movieName));
 
                 // For demonstration purposes, grabbing the first item in the movie list. Doesn't correspond to movie ID
-                Movie someMovie = MovieList.getList().get(0);
+                final Movie someMovie = MovieList.getList().get(0);
 
-                Intent playIntent = new Intent();
-                String packageName = AlexaClientManager.getSharedInstance().getApplicationContext().getPackageName();
+                final Intent playIntent = new Intent();
+                final String packageName = AlexaClientManager.getSharedInstance().getApplicationContext().getPackageName();
                 playIntent.setClassName(packageName, packageName + ".PlaybackActivity");
                 playIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -123,29 +153,29 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
                 AlexaClientManager.getSharedInstance().getApplicationContext().startActivity(playIntent);
 
             } else if ("SearchAndDisplayResults".equals(directiveName)) {
-                String searchTerm = directive.getDirective().getPayload().getEntities().get(0).getValue().toLowerCase();
-                Log.d(TAG, "Searching for: " + searchTerm);
+                final String searchTerm = directive.getDirective().getPayload().getEntities().get(0).getValue().toLowerCase();
+                Log.d(TAG, MessageFormat.format("Searching for: {0}", searchTerm));
 
-                String searchPayload = "";
+                final String searchPayload = "";
 
                 if (jsonTree.isJsonObject()) {
-                    JsonObject jsonObject = jsonTree.getAsJsonObject();
+                    final JsonObject jsonObject = jsonTree.getAsJsonObject();
 
-                    JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
+                    final JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
 
-                    JsonObject jHeader = jDirective.get("header").getAsJsonObject();
-                    JsonObject jEndpoint = jDirective.get("endpoint").getAsJsonObject();
-                    JsonElement jPayload = jDirective.get("payload");
+                    final JsonObject jHeader = jDirective.get("header").getAsJsonObject();
+                    final JsonObject jEndpoint = jDirective.get("endpoint").getAsJsonObject();
+                    final JsonElement jPayload = jDirective.get("payload");
 
-                    String sHeaderName = jHeader.get("name").getAsString();
+                    final String sHeaderName = jHeader.get("name").getAsString();
 
                     if (jPayload.isJsonObject()) {
-                        JsonObject jPayloadObject = jPayload.getAsJsonObject();
-                        JsonElement jSearchResults = jPayloadObject.get("searchResults");
+                        final JsonObject jPayloadObject = jPayload.getAsJsonObject();
+                        final JsonElement jSearchResults = jPayloadObject.get("searchResults");
 
-                        Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
-                        FireTVApp theApp = (FireTVApp) context;
-                        Activity topActivity = theApp.getCurrentActivity();
+                        final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+                        final FireTVApp theApp = (FireTVApp) context;
+                        final Activity topActivity = theApp.getCurrentActivity();
 
                         try {
                             final MainActivity mainActivity = (MainActivity) topActivity;
@@ -168,14 +198,13 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
 
                 } else {
                     // Invalid message JSON
-
                 }
 
             } else if ("Pause".equals(directiveName)) {
 
-                Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
-                FireTVApp theApp = (FireTVApp) context;
-                Activity topActivity = theApp.getCurrentActivity();
+                final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+                final FireTVApp theApp = (FireTVApp) context;
+                final Activity topActivity = theApp.getCurrentActivity();
                 Log.d(TAG, "Pausing MOVIE ");
 
                 try {
@@ -194,9 +223,9 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
                 }
 
             } else if ("Play".equals(directiveName)) {
-                Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
-                FireTVApp theApp = (FireTVApp) context;
-                Activity topActivity = theApp.getCurrentActivity();
+                final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+                final FireTVApp theApp = (FireTVApp) context;
+                final Activity topActivity = theApp.getCurrentActivity();
                 Log.d(TAG, "Playing MOVIE ");
 
                 try {
@@ -215,9 +244,9 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
                 }
 
             } else if ("Rewind".equals(directiveName)) {
-                Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
-                FireTVApp theApp = (FireTVApp) context;
-                Activity topActivity = theApp.getCurrentActivity();
+                final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+                final FireTVApp theApp = (FireTVApp) context;
+                final Activity topActivity = theApp.getCurrentActivity();
                 Log.d(TAG, "Rewinding MOVIE ");
                 try {
                     final PlaybackActivity playbackActivity = (PlaybackActivity) topActivity;
@@ -237,25 +266,25 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
             } else if ("AdjustSeekPosition".equals(directiveName)) {
 
                 if (jsonTree.isJsonObject()) {
-                    JsonObject jsonObject = jsonTree.getAsJsonObject();
+                    final JsonObject jsonObject = jsonTree.getAsJsonObject();
 
-                    JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
+                    final JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
 
-                    JsonObject jHeader = jDirective.get("header").getAsJsonObject();
-                    JsonObject jEndpoint = jDirective.get("endpoint").getAsJsonObject();
-                    JsonElement jPayload = jDirective.get("payload");
+                    final JsonObject jHeader = jDirective.get("header").getAsJsonObject();
+                    final JsonObject jEndpoint = jDirective.get("endpoint").getAsJsonObject();
+                    final JsonElement jPayload = jDirective.get("payload");
 
-                    String sHeaderName = jHeader.get("name").getAsString();
+                    final String sHeaderName = jHeader.get("name").getAsString();
 
                     if (jPayload.isJsonObject()) {
-                        JsonObject jPayloadObject = jPayload.getAsJsonObject();
-                        JsonElement deltaPosElement = jPayloadObject.get("deltaPositionMilliseconds");
-                        Long deltaPosNum = deltaPosElement.getAsLong();
-                        Log.d(TAG, "PAYLOAD: " + deltaPosNum.toString());
+                        final JsonObject jPayloadObject = jPayload.getAsJsonObject();
+                        final JsonElement deltaPosElement = jPayloadObject.get("deltaPositionMilliseconds");
+                        final Long deltaPosNum = deltaPosElement.getAsLong();
+                        Log.d(TAG, MessageFormat.format("PAYLOAD: {0}", deltaPosNum.toString()));
 
-                        Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
-                        FireTVApp theApp = (FireTVApp) context;
-                        Activity topActivity = theApp.getCurrentActivity();
+                        final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+                        final FireTVApp theApp = (FireTVApp) context;
+                        final Activity topActivity = theApp.getCurrentActivity();
                         Log.d(TAG, "Rewinding MOVIE ");
                         try {
                             final PlaybackActivity playbackActivity = (PlaybackActivity) topActivity;
@@ -278,9 +307,191 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
 
                 }
 
-            }
+             } else if ("ActionOnUIElement".equals(directiveName)) {
 
+                if (jsonTree.isJsonObject()) {
+                    final JsonObject jsonObject = jsonTree.getAsJsonObject();
+
+                    final JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
+                    final JsonElement jPayload = jDirective.get("payload");
+
+                    if (jPayload != null && jPayload.isJsonObject()) {
+                        final String jPayloadString = jPayload.getAsJsonObject().toString();
+
+                        final ActionOnUIElement actionOnUIElement = gson.fromJson(jPayloadString, ActionOnUIElement.class);
+                        Log.d(TAG, MessageFormat.format("The ActionOnUIElement directive is {0}", actionOnUIElement));
+
+                        final boolean isActionOnUIElementValid = validateActionOnUIElementDirective(actionOnUIElement);
+                        if (!isActionOnUIElementValid) {
+                            Log.d(TAG, "The received ActionOnUIElement directive is invalid. Cannot process it.");
+                            return;
+                        }
+
+                        final Intent actionOnUIElementIntent = new Intent();
+                        actionOnUIElementIntent.setAction(ACTION_ON_UI_ELEMENT);
+                        final String packageName = FireTVApp.getInstance().getPackageName();
+                        actionOnUIElementIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        actionOnUIElementIntent.putExtra(EXTRA_UI_CONTROLLER_ELEMENT_ID, actionOnUIElement.getElement().getElementId());
+                        actionOnUIElementIntent.putExtra(EXTRA_UI_CONTROLLER_ELEMENT_TYPE, actionOnUIElement.getElement().getEntity().getType());
+                        actionOnUIElementIntent.putExtra(EXTRA_UI_CONTROLLER_ACTION, actionOnUIElement.getAction());
+
+                        final Scene scene = actionOnUIElement.getScene();
+                        if (scene.getSceneId().equals(HOME_BROWSER_SCENE_IDENTIFIER)) {
+                            Log.d(TAG, MessageFormat.format("Setting the destination of actionOnUIElement intent to Home Screen: {0}",
+                                    MainActivity.class.getName()));
+                            actionOnUIElementIntent.setClassName(packageName, MainActivity.class.getName());
+                        } else if (scene.getSceneId().equals(VIDEO_DETAIL_SCENE_IDENTIFIER)) {
+                            Log.d(TAG, MessageFormat.format("Setting the destination of actionOnUIElement intent to Detail Screen: {0}",
+                                    DetailsActivity.class.getName()));
+                            actionOnUIElementIntent.setClassName(packageName, DetailsActivity.class.getName());
+                        } else {
+                            Log.e(TAG, MessageFormat.format("Unknown scene id {0}. Cannot process ActionOnUIElement directive", scene.getSceneId()));
+                            return;
+                        }
+                        Log.d(TAG, MessageFormat.format("Sending the actionOnUIElement intent: {0}", actionOnUIElementIntent));
+                        FireTVApp.getInstance().startActivity(actionOnUIElementIntent);
+                        Log.d(TAG, "Finished processing the UIController directive");
+                    }
+                } else {
+                    // Invalid message JSON
+                    Log.e(TAG, "Invalid message JSON");
+                }
+            } else if ("DisplayDetails".equals(directiveName)) {
+
+                // Checks json object
+                if (!jsonTree.isJsonObject()) {
+                    // Invalid message JSON
+                    Log.e(TAG, "Invalid message JSON");
+                    return;
+                }
+
+                // Extracts the underlying directive and payload
+                final JsonObject jsonObject = jsonTree.getAsJsonObject();
+
+                final JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
+                final JsonElement jPayload = jDirective.get("payload");
+
+                // Checks payload
+                if (jPayload == null || !jPayload.isJsonObject()) {
+                    // Invalid payload
+                    Log.e(TAG, "Invalid payload; payload is null or not a JsonObject");
+                    return;
+                }
+
+                final String jPayloadString = jPayload.getAsJsonObject().toString();
+
+                final MediaDetailsElement mediaDetailsElement = gson.fromJson(jPayloadString, MediaDetailsElement.class);
+                Log.d(TAG, "The MediaDetailsNavigator directive is " + mediaDetailsElement);
+
+                // Validates directive
+                if (!isMediaDetailsElementValid(mediaDetailsElement)) {
+                    Log.e(TAG, "The received MediaDetailsElement directive is invalid. Cannot process it.");
+                    return;
+                }
+
+                final Intent mediaDetailsIntent = new Intent();
+                final String currentSceneId = getCurrentSceneId();
+                final String packageName = FireTVApp.getInstance().getPackageName();
+                if (HOME_BROWSER_SCENE_IDENTIFIER.equals(currentSceneId)) {
+                    Log.d(TAG, MessageFormat.format("Setting the destination of mediaDetailsElement intent to Home Screen: {0}",
+                            MainActivity.class.getName()));
+                    mediaDetailsIntent.setClassName(packageName, MainActivity.class.getName());
+                } else if (VIDEO_DETAIL_SCENE_IDENTIFIER.equals(currentSceneId)) {
+                    Log.d(TAG, MessageFormat.format("Setting the destination of mediaDetailsElement intent to Detail Screen: {0}",
+                            DetailsActivity.class.getName()));
+                    mediaDetailsIntent.setClassName(packageName, DetailsActivity.class.getName());
+                } else {
+                    Log.w(TAG, MessageFormat.format("Current screen does not have items to display details of. Current scene: {0}", currentSceneId));
+                    return;
+                }
+
+                mediaDetailsIntent.setAction(ACTION_ON_MEDIA_DETAILS);
+                mediaDetailsIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                // Adds entries from entity to intent
+                mediaDetailsIntent.putExtra(EXTRA_MEDIA_DETAILS_NAVIGATOR_TYPE, mediaDetailsElement.getEntity().getType());
+                mediaDetailsIntent.putExtra(EXTRA_MEDIA_DETAILS_NAVIGATOR_VALUE, mediaDetailsElement.getEntity().getValue());
+                final ExternalIds externalIds = mediaDetailsElement.getEntity().getExternalIds();
+                if (externalIds != null) {
+                    Log.d(TAG, MessageFormat.format("externalIds is present: {0}", externalIds));
+                    mediaDetailsIntent.putExtra(EXTRA_MEDIA_DETAILS_NAVIGATOR_ENTITY_ID, externalIds.getEntityId());
+                }
+
+                Log.d(TAG, MessageFormat.format("Sending the mediaDetailsElement intent: {0}", mediaDetailsIntent));
+                FireTVApp.getInstance().startActivity(mediaDetailsIntent);
+                Log.d(TAG, "Finished processing the DisplayDetails directive");
+            } else {
+                Log.e(TAG, "Unknown directive received.");
+            }
+        }
+    }
+
+    private String getCurrentSceneId() {
+        final Context context = AlexaClientManager.getSharedInstance().getApplicationContext();
+        final FireTVApp theApp = (FireTVApp) context;
+        final Activity topActivity = theApp.getCurrentActivity();
+
+        if (topActivity instanceof MainActivity) {
+            return HOME_BROWSER_SCENE_IDENTIFIER;
+        } else if (topActivity instanceof DetailsActivity) {
+            return VIDEO_DETAIL_SCENE_IDENTIFIER;
+        }
+        return null;
+    }
+
+    private boolean validateActionOnUIElementDirective(final ActionOnUIElement actionOnUIElement) {
+        if (actionOnUIElement == null) {
+            Log.e(TAG, "ActionOnUIElement directive payload cannot be null.");
+            return false;
         }
 
+        final Scene scene = actionOnUIElement.getScene();
+        final Element elementToBeActedUpOn = actionOnUIElement.getElement();
+        final UIAction actionToBePerformed = actionOnUIElement.getAction();
+
+        if (scene == null || elementToBeActedUpOn == null || actionToBePerformed == null) {
+            Log.e(TAG, "Scene and elementToBeActedUpOn and actionToBePerformed cannot be null");
+            return false;
+        }
+
+        if (scene.getSceneId() == null) {
+            Log.e(TAG, "Scene id cannot be null");
+            return false;
+        }
+
+        final String currentSceneId = getCurrentSceneId();
+        Log.d(TAG, MessageFormat.format("The current scene id is {0}", currentSceneId));
+        if (!scene.getSceneId().equals(currentSceneId)) {
+            Log.w(TAG, MessageFormat.format("The current scene id {0} does not match with the received scene id {1}.",
+                    currentSceneId, scene.getSceneId()));
+            return false;
+        }
+
+        return true;
     }
+
+    private boolean isMediaDetailsElementValid(final MediaDetailsElement mediaDetailsElement) {
+        if (mediaDetailsElement == null) {
+            Log.e(TAG, "MediaDetailsNavigator element cannot be null");
+            return false;
+        }
+        final Entity entity = mediaDetailsElement.getEntity();
+        if (entity == null) {
+            Log.e(TAG, "Media details entity cannot be null");
+            return false;
+        }
+        final String type = entity.getType();
+        if (type == null) {
+            Log.e(TAG, "Media details entity type cannot be null");
+            return false;
+        }
+        final String value = entity.getValue();
+        if (value == null) {
+            Log.e(TAG, "Media details entity value cannot be null");
+            return false;
+        }
+        return true;
+    }
+
 }

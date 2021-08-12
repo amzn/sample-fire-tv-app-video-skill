@@ -1,3 +1,8 @@
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+ */
 
 package com.example.vskfiretv.data;
 
@@ -90,6 +95,16 @@ public class Entity implements Parcelable
 
     public int describeContents() {
         return  0;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "type=" + type +
+                "uri=" + uri +
+                "value=" + value +
+                "externalIds=" + externalIds +
+                '}';
     }
 
 }

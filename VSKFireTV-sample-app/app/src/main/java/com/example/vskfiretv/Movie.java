@@ -1,18 +1,12 @@
-/*
- * Copyright (C) 2017 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
  */
 
 package com.example.vskfiretv;
+
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
@@ -29,6 +23,7 @@ public class Movie implements Serializable {
     private String cardImageUrl;
     private String videoUrl;
     private String studio;
+    private Integer ordinal;
 
     public Movie() {
     }
@@ -97,6 +92,10 @@ public class Movie implements Serializable {
         this.cardImageUrl = cardImageUrl;
     }
 
+    public Integer getOrdinal() { return ordinal; }
+
+    public void setOrdinal(Integer ordinal) { this.ordinal = ordinal; }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -106,6 +105,23 @@ public class Movie implements Serializable {
                 ", videoUrl='" + videoUrl + '\'' +
                 ", backgroundImageUrl='" + bgImageUrl + '\'' +
                 ", cardImageUrl='" + cardImageUrl + '\'' +
+                ", ordinal='" + ordinal + '\'' +
                 '}';
+    }
+
+    @NonNull
+    @Override
+    protected Object clone() {
+        final Movie clonedMovie = new Movie();
+        clonedMovie.setId(this.getId());
+        clonedMovie.setMovieId(this.getMovieId());
+        clonedMovie.setTitle(this.getTitle());
+        clonedMovie.setDescription(this.getDescription());
+        clonedMovie.setStudio(this.getStudio());
+        clonedMovie.setCardImageUrl(this.getCardImageUrl());
+        clonedMovie.setBackgroundImageUrl(this.getBackgroundImageUrl());
+        clonedMovie.setVideoUrl(this.getVideoUrl());
+        clonedMovie.setOrdinal(this.getOrdinal());
+        return clonedMovie;
     }
 }

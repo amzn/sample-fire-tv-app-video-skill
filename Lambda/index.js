@@ -41,7 +41,7 @@ exports.handler = (event, context, callback) => {
   let directive = event.directive;
   if (directive) {
 
-    if (directive.header.name == "Discover") {
+    if (directive.header.name === "Discover") {
 
       let resp = {
         event: {
@@ -72,9 +72,36 @@ exports.handler = (event, context, callback) => {
                   "interface": "Alexa.ChannelController",
                   "type": "AlexaInterface",
                   "version": "1.0"
+                },
+                {
+                  "interface": "Alexa.UIController",
+                  "type": "AlexaInterface",
+                  "version": "3.0",
+                  "properties": {
+                    "supported": [
+                      {
+                        "name": "uiElements"
+                      },
+                      {
+                        "name": "focusedUIElement"
+                      }
+                    ],
+                    "proactivelyReported": true,
+                    "retrievable": false
+                  }
+                },
+                {
+                  "interface": "Alexa.MediaDetailsNavigator",
+                  "type": "AlexaInterface",
+                  "version": "3.0",
+                  "configurations": {
+                    "entityTypes": [
+                      "Video",
+                      "App"
+                    ]
+                  }
                 }
-              ],
-
+              ]
             }]
           }
         }
@@ -91,15 +118,14 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-
     } else if (
-      directive.header.name == "Play" ||
-      directive.header.name == "Resume" ||
-      directive.header.name == "Pause" ||
-      directive.header.name == "Next" ||
-      directive.header.name == "Previous" ||
-      directive.header.name == "Rewind" ||
-      directive.header.name == "FastForward") {
+      directive.header.name === "Play" ||
+      directive.header.name === "Resume" ||
+      directive.header.name === "Pause" ||
+      directive.header.name === "Next" ||
+      directive.header.name === "Previous" ||
+      directive.header.name === "Rewind" ||
+      directive.header.name === "FastForward") {
 
       // Partner-specific logic to handle the directives goes here
 
@@ -107,6 +133,7 @@ exports.handler = (event, context, callback) => {
       let resp = {
         event: {
           "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
             "messageId": "not-required",
             "correlationToken": "not-required",
             "name": "Response",
@@ -135,8 +162,7 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-
-    } else if (directive.header.name == "SearchAndPlay" || directive.header.name == "SearchAndDisplayResults") {
+    } else if (directive.header.name === "SearchAndPlay" || directive.header.name === "SearchAndDisplayResults") {
 
      console.log("Search started");
 
@@ -176,6 +202,7 @@ exports.handler = (event, context, callback) => {
       let resp = {
         event: {
           "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
             "messageId": "not-required",
             "correlationToken": "not-required",
             "name": "Response",
@@ -204,7 +231,7 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-    } else if (directive.header.name == "AdjustSeekPosition") {
+    } else if (directive.header.name === "AdjustSeekPosition") {
 
       // Partner-specific logic to handle the AdjustSeekPosition directive goes here
 
@@ -212,6 +239,7 @@ exports.handler = (event, context, callback) => {
       let resp = {
         event: {
           "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
             "messageId": "not-required",
             "correlationToken": "not-required",
             "name": "StateReport",
@@ -245,8 +273,7 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-
-    } else if (directive.header.name == "ChangeChannel") {
+    } else if (directive.header.name === "ChangeChannel") {
 
       // Partner-specific logic to handle the ChangeChannel directive goes here
       // Code for sending this directive from the lambda to the app goes here
@@ -268,6 +295,7 @@ exports.handler = (event, context, callback) => {
         },
         event: {
           "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
             "messageId": "not-required",
             "correlationToken": "not-required",
             "name": "Response",
@@ -292,9 +320,7 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-
-    } else if (directive.header.name == "AcceptGrant")
-    {
+    } else if (directive.header.name === "AcceptGrant") {
         console.log("Directive received from Alexa", directive.header.name)
         let resp = {
             "event": {
@@ -309,7 +335,78 @@ exports.handler = (event, context, callback) => {
         };
         console.log("Sending ", directive.header.name, " response back to Alexa: ", JSON.stringify(resp));
         callback(null, resp);
+    } else if (directive.header.name === "ActionOnUIElement") {
+      // Partner-specific logic to handle the directives goes here
 
+      // Below, we send a "success" response back to Alexa, indicating the directive was received by the Lambda
+      let resp = {
+        event: {
+          "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
+            "messageId": "not-required",
+            "correlationToken": "not-required",
+            "name": "Response",
+            "namespace": "Alexa",
+            "payloadVersion": "3"
+          },
+          "endpoint": {
+            "scope": {
+              "type": "DirectedUserId",
+              "directedUserId": "not-required"
+            },
+            "endpointId": "not-required"
+          },
+          "payload": {}
+        }
+      };
+
+      // Process the directive by sending the message to app
+      sendMessageToDevice(JSON.stringify(event), context).then(
+        function(body) {
+          console.log("Sending ", directive.header.name, " response back to Alexa: ", JSON.stringify(resp));
+          return callback(null, resp);
+        },
+        function(err) {
+          console.log('Could not send the message to the device: ' + err);
+          return callback(null);
+        }
+      )
+    } else if (directive.header.name === "DisplayDetails") {
+      // Partner-specific logic to handle the directives goes here
+
+      // Below, we send a "success" response back to Alexa, indicating the directive was received by the Lambda
+      let resp = {
+        event: {
+          "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
+            "messageId": "not-required",
+            "correlationToken": "not-required",
+            "name": "Response",
+            "namespace": "Alexa",
+            "payloadVersion": "3"
+          },
+          "endpoint": {
+            "scope": {
+              "type": "DirectedUserId",
+              "directedUserId": "not-required"
+            },
+            "endpointId": "not-required"
+          },
+          "payload": {}
+        }
+      };
+
+      // Process the directive by sending the message to app
+      sendMessageToDevice(JSON.stringify(event), context).then(
+        function(body) {
+          console.log("Sending ", directive.header.name, " response back to Alexa: ", JSON.stringify(resp));
+          return callback(null, resp);
+        },
+        function(err) {
+          console.log('Could not send the message to the device: ' + err);
+          return callback(null);
+        }
+      )
     } else {
       console.log("Directive is not supported. Ignoring it.");
       callback(null, 'Directive is not supported. Ignoring it.');

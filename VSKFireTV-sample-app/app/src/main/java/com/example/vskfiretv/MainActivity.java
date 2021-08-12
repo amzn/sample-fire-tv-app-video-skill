@@ -1,38 +1,60 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/**
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+ * Licensed under the Amazon Software License  http://aws.amazon.com/asl/
  */
 
 package com.example.vskfiretv;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
 import com.amazon.alexa.vsk.clientlib.AlexaClientManager;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaChannelControllerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaKeyPadControllerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaMediaDetailsNavigatorCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaPlaybackControllerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaRemoteVideoPlayerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaSeekController;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaUIControllerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaVideoCapability;
+import com.amazon.alexa.vsk.clientlib.capability.configuration.MediaDetailsNavigatorConfiguration;
+import com.amazon.alexa.vsk.clientlib.capability.operation.KeyPadControllerOperation;
+import com.amazon.alexa.vsk.clientlib.capability.operation.PlaybackControllerOperation;
+import com.amazon.alexa.vsk.clientlib.capability.operation.UIControllerOperation;
+import com.amazon.alexa.vsk.clientlib.capability.property.UIControllerSupportedProperty;
+import com.amazon.alexauicontroller.EntityType;
+import com.amazon.alexauicontroller.UIAction;
 import com.amazon.device.messaging.ADM;
+import com.example.vskfiretv.utils.UIElementUtil;
 import com.google.gson.JsonElement;
+
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static com.example.vskfiretv.utils.Constants.ACTION_ON_MEDIA_DETAILS;
+import static com.example.vskfiretv.utils.Constants.ACTION_ON_UI_ELEMENT;
 
 /*
  * Main Activity class that loads {@link MainFragment}.
  */
 public class MainActivity extends FragmentActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     protected FireTVApp myFireTVApp;
+    public UIElementAction uiElementAction;
+    private MediaDetailsAction mediaDetailsAction;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         myFireTVApp = (FireTVApp) this.getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -48,28 +70,69 @@ public class MainActivity extends FragmentActivity {
         // immediately which will enable your user use Voice service ASAP.
         // You can delay this step until active user signed-in to your application.
         AlexaClientManager.getSharedInstance().setAlexaEnabled(true);
+        Log.d(TAG, "MainActivity initialized");
     }
 
     private void initializeAlexaClient() {
         // Retrieve the shared instance of the AlexaClientManager
-        AlexaClientManager clientManager = AlexaClientManager.getSharedInstance();
+        final AlexaClientManager clientManager = AlexaClientManager.getSharedInstance();
 
         // Gather your Skill ID
-        final String alexaSkillId = "amzn1.ask.skill.12345678-abcd-1234-efgh-123456789";
+        final String alexaSkillId = "<insert skill id>";
 
         // Create a list of supported capabilities in your skill.
-        List capabilities = new ArrayList<>();
-        capabilities.add(AlexaClientManager.CAPABILITY_CHANNEL_CONTROLLER);
-        capabilities.add(AlexaClientManager.CAPABILITY_PLAY_BACK_CONTROLLER);
-        capabilities.add(AlexaClientManager.CAPABILITY_REMOTE_VIDEO_PLAYER);
-        capabilities.add(AlexaClientManager.CAPABILITY_SEEK_CONTROLLER);
-        capabilities.add(AlexaClientManager.CAPABILITY_KEYPAD_CONTROLLER);
+        final List<AlexaVideoCapability> supportedCapabilities = new ArrayList<>();
+        supportedCapabilities.add(getAlexaChannelControllerCapability());
+        supportedCapabilities.add(getAlexaPlaybackControllerCapability());
+        supportedCapabilities.add(getAlexaRemoteVideoPlayerCapability());
+        supportedCapabilities.add(getAlexaSeekControllerCapability());
+        supportedCapabilities.add(getAlexaKeypadControllerCapability());
+        supportedCapabilities.add(getAlexaUIControllerCapability());
+        supportedCapabilities.add(getMediaDetailsNavigatorCapability());
 
         // Initialize the client library by calling initialize().
-        clientManager.initialize(getApplicationContext(),
+        clientManager.initializeClient(getApplicationContext(),
                 alexaSkillId,
                 AlexaClientManager.SKILL_STAGE_DEVELOPMENT,
-                capabilities);
+                supportedCapabilities);
+    }
+
+    private AlexaVideoCapability getAlexaChannelControllerCapability() {
+        return new AlexaChannelControllerCapability("1.0", null);
+    }
+
+    private AlexaVideoCapability getAlexaPlaybackControllerCapability() {
+        final List<PlaybackControllerOperation> playBackOperationsSupported = new ArrayList<>();
+        playBackOperationsSupported.add(PlaybackControllerOperation.PLAY);
+        playBackOperationsSupported.add(PlaybackControllerOperation.PAUSE);
+        playBackOperationsSupported.add(PlaybackControllerOperation.STOP);
+        playBackOperationsSupported.add(PlaybackControllerOperation.START_OVER);
+        playBackOperationsSupported.add(PlaybackControllerOperation.REWIND);
+        playBackOperationsSupported.add(PlaybackControllerOperation.FAST_FORWARD);
+
+        return new AlexaPlaybackControllerCapability("3", playBackOperationsSupported);
+    }
+
+    private AlexaVideoCapability getAlexaRemoteVideoPlayerCapability() {
+        return new AlexaRemoteVideoPlayerCapability("1.0");
+    }
+
+    private AlexaVideoCapability getAlexaSeekControllerCapability() {
+        return new AlexaSeekController("1.0");
+    }
+
+    private AlexaVideoCapability getAlexaKeypadControllerCapability() {
+        return new AlexaKeyPadControllerCapability("3", Arrays.asList(KeyPadControllerOperation.values()));
+    }
+
+    private AlexaVideoCapability getAlexaUIControllerCapability() {
+        return new AlexaUIControllerCapability("3.0", Arrays.asList(UIControllerOperation.values()),
+                Arrays.asList(UIControllerSupportedProperty.values()));
+    }
+
+    private AlexaVideoCapability getMediaDetailsNavigatorCapability() {
+        return new AlexaMediaDetailsNavigatorCapability("3.0", Arrays.asList(MediaDetailsNavigatorConfiguration.VIDEO,
+                MediaDetailsNavigatorConfiguration.APP));
     }
 
     private void initializeAdm() {
@@ -90,7 +153,7 @@ public class MainActivity extends FragmentActivity {
 
                     // You have to provide the retrieved ADM registration Id to the Alexa Client library.
                     final String admRegistrationId = adm.getRegistrationId();
-                    Log.i("VSKFireTVApp", "ADM registration Id:" + admRegistrationId);
+                    Log.d("VSKFireTVApp", MessageFormat.format("ADM registration Id: {0}", admRegistrationId));
                     // Provide the acquired ADM registration ID.
                     AlexaClientManager.getSharedInstance().setDownChannelReady(true, admRegistrationId);
                 }
@@ -100,8 +163,8 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public void ShowResults(String searchTerm, JsonElement searchPayload){
-        MainFragment fragmentDemo = (MainFragment) getFragmentManager().findFragmentById(R.id.main_browse_fragment);
+    public void ShowResults(final String searchTerm, final JsonElement searchPayload){
+        final MainFragment fragmentDemo = (MainFragment) getFragmentManager().findFragmentById(R.id.main_browse_fragment);
         fragmentDemo.displaySearchResults( searchTerm,  searchPayload);
     }
 
@@ -120,8 +183,53 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void clearReferences(){
-        Activity currActivity = myFireTVApp.getCurrentActivity();
+        final Activity currActivity = myFireTVApp.getCurrentActivity();
         if (this.equals(currActivity))
             myFireTVApp.setCurrentActivity(null);
+    }
+
+    @Override
+    public void onAttachFragment(@NonNull final Fragment fragment) {
+        super.onAttachFragment(fragment);
+        Log.d(TAG, "MainActivity fragment attached");
+
+        final Intent intent = getIntent();
+        if (intent != null) {
+            onNewIntent(intent);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(final Intent intent) {
+        Log.d(TAG, MessageFormat.format("Received a new Intent {0}", intent));
+        super.onNewIntent(intent);
+
+        final String intentAction = intent.getAction();
+        if (ACTION_ON_UI_ELEMENT.equals(intentAction)) {
+            Log.d(TAG, "creating bundle for UIController intent");
+            uiElementAction.onUIElementAction(UIElementUtil.getUIControllerBundleFromIntent(intent));
+        } else if (ACTION_ON_MEDIA_DETAILS.equals(intentAction)) {
+            Log.d(TAG, "creating bundle for MediaDetailsNavigator intent");
+            mediaDetailsAction.onMediaDetailsAction(UIElementUtil.getMediaDetailsNavigatorBundleFromIntent(intent));
+        } else {
+            Log.d(TAG, "Unknown Intent received");
+        }
+        Log.d(TAG, "Finished processing the received intent.");
+    }
+
+    public void setUiElementAction(final UIElementAction uiElementAction) {
+        this.uiElementAction = uiElementAction;
+    }
+
+    public void setMediaDetailsAction(final MediaDetailsAction mediaDetailsAction) {
+        this.mediaDetailsAction = mediaDetailsAction;
+    }
+
+    public interface UIElementAction {
+        void onUIElementAction(final Bundle bundle);
+    }
+
+    public interface MediaDetailsAction {
+        void onMediaDetailsAction(final Bundle bundle);
     }
 }
