@@ -37,6 +37,8 @@ import com.google.gson.JsonParser;
 import com.example.vskfiretv.utils.UIElementUtil;
 
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.Random;
 
 import static com.example.vskfiretv.MainFragment.HOME_BROWSER_SCENE_IDENTIFIER;
 import static com.example.vskfiretv.VideoDetailsFragment.VIDEO_DETAIL_SCENE_IDENTIFIER;
@@ -48,6 +50,8 @@ import static com.example.vskfiretv.utils.Constants.EXTRA_MEDIA_DETAILS_NAVIGATO
 import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ACTION;
 import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_ID;
 import static com.example.vskfiretv.utils.Constants.EXTRA_UI_CONTROLLER_ELEMENT_TYPE;
+import static com.example.vskfiretv.utils.Constants.URI_FOR_PLAY_SOMETHING;
+import static com.example.vskfiretv.utils.Constants.URI_FOR_PLAY_SOMETHING_ELSE;
 
 public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
 
@@ -136,21 +140,13 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
             final String directiveName = directive.getDirective().getHeader().getName();
 
             if ("SearchAndPlay".equals(directiveName)) {
-                final Movie firstMovie = MovieList.getList().get(0);
-                final String movieName = firstMovie.getTitle();
-                Log.d(TAG, MessageFormat.format("Playing MOVIE {0}", movieName));
 
                 // For demonstration purposes, grabbing the first item in the movie list. Doesn't correspond to movie ID
-                final Movie someMovie = MovieList.getList().get(0);
+                final Movie firstMovie = MovieList.getList().get(0);
 
-                final Intent playIntent = new Intent();
-                final String packageName = AlexaClientManager.getSharedInstance().getApplicationContext().getPackageName();
-                playIntent.setClassName(packageName, packageName + ".PlaybackActivity");
-                playIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                playMovie(firstMovie);
 
-                // PlaybackActivity expects a movie to be currently selected, set this now in case there wasn't one
-                playIntent.putExtra(DetailsActivity.MOVIE, someMovie);
-                AlexaClientManager.getSharedInstance().getApplicationContext().startActivity(playIntent);
+                Log.i(TAG, "Handling SearchAndPlay directive finished");
 
             } else if ("SearchAndDisplayResults".equals(directiveName)) {
                 final String searchTerm = directive.getDirective().getPayload().getEntities().get(0).getValue().toLowerCase();
@@ -421,6 +417,48 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
                 Log.d(TAG, MessageFormat.format("Sending the mediaDetailsElement intent: {0}", mediaDetailsIntent));
                 FireTVApp.getInstance().startActivity(mediaDetailsIntent);
                 Log.d(TAG, "Finished processing the DisplayDetails directive");
+            } else if ("LaunchTarget".equals(directiveName)) {
+                // Checks json object
+                if (!jsonTree.isJsonObject()) {
+                    // Invalid message JSON
+                    Log.e(TAG, "Invalid message JSON");
+                    return;
+                }
+
+                // Extracts the underlying directive and payload
+                final JsonObject jsonObject = jsonTree.getAsJsonObject();
+
+                final JsonObject jDirective = jsonObject.get("directive").getAsJsonObject();
+                final JsonElement jPayload = jDirective.get("payload");
+
+                // Checks payload
+                if (jPayload == null || !jPayload.isJsonObject()) {
+                    // Invalid payload
+                    Log.e(TAG, "Invalid payload; payload is null or not a JsonObject");
+                    return;
+                }
+
+                final JsonObject jPayloadObject = jPayload.getAsJsonObject();
+                if (!isLaunchTargetDirectivePayloadValid(jPayloadObject)) {
+                    Log.e(TAG, "The received LaunchTarget directive payload is invalid. Cannot process it");
+                    return;
+                }
+
+                final String name = jPayloadObject.get("name").getAsString();
+                final String identifier = jPayloadObject.get("identifier").getAsString();
+                final String sourceId = jPayloadObject.get("sourceId").getAsString();
+
+                Log.d(TAG, MessageFormat.format("LaunchTarget payload name: {0}, identifier: {1}, and sourceId: {2}",
+                        name, identifier, sourceId));
+
+                if (URI_FOR_PLAY_SOMETHING.equals(identifier) || URI_FOR_PLAY_SOMETHING_ELSE.equals(identifier)) {
+                    List<Movie> moviesList = MovieList.getList();
+                    Random rand = new Random();
+                    playMovie(moviesList.get(rand.nextInt(moviesList.size())));
+                }
+
+                Log.i(TAG, "Handling LaunchTarget directive finished");
+
             } else {
                 Log.e(TAG, "Unknown directive received.");
             }
@@ -492,6 +530,44 @@ public class VSKFireTVMessageHandler extends ADMMessageHandlerBase {
             return false;
         }
         return true;
+    }
+
+    private boolean isLaunchTargetDirectivePayloadValid(final JsonObject jPayloadObject) {
+        final JsonElement jName = jPayloadObject.get("name");
+        if (jName == null || !jName.isJsonPrimitive()) {
+            // Invalid name
+            Log.e(TAG, "Invalid name; name is null or not a JsonPrimitive");
+            return false;
+        }
+
+        final JsonElement jIdentifier = jPayloadObject.get("identifier");
+        if (jIdentifier == null || !jIdentifier.isJsonPrimitive()) {
+            // Invalid identifier
+            Log.e(TAG, "Invalid identifier; identifier is null or not a JsonPrimitive");
+            return false;
+        }
+
+        final JsonElement jSourceId = jPayloadObject.get("sourceId");
+        if (jSourceId == null || !jSourceId.isJsonPrimitive()) {
+            // Invalid sourceId
+            Log.e(TAG, "Invalid sourceId; sourceId is null or not a JsonPrimitive");
+            return false;
+        }
+        return true;
+    }
+
+    private void playMovie(Movie movieToBePlayed) {
+        final String movieName = movieToBePlayed.getTitle();
+        Log.d(TAG, MessageFormat.format("Playing MOVIE {0}", movieName));
+
+        final Intent playIntent = new Intent();
+        final String packageName = AlexaClientManager.getSharedInstance().getApplicationContext().getPackageName();
+        playIntent.setClassName(packageName, packageName + ".PlaybackActivity");
+        playIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // PlaybackActivity expects a movie to be currently selected, set this now in case there wasn't one
+        playIntent.putExtra(DetailsActivity.MOVIE, movieToBePlayed);
+        AlexaClientManager.getSharedInstance().getApplicationContext().startActivity(playIntent);
     }
 
 }

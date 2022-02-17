@@ -18,20 +18,19 @@ import androidx.fragment.app.FragmentActivity;
 import com.amazon.alexa.vsk.clientlib.AlexaClientManager;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaChannelControllerCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaKeyPadControllerCapability;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaLauncherCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaMediaDetailsNavigatorCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaPlaybackControllerCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaRemoteVideoPlayerCapability;
-import com.amazon.alexa.vsk.clientlib.capability.AlexaSeekController;
+import com.amazon.alexa.vsk.clientlib.capability.AlexaSeekControllerCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaUIControllerCapability;
 import com.amazon.alexa.vsk.clientlib.capability.AlexaVideoCapability;
 import com.amazon.alexa.vsk.clientlib.capability.configuration.MediaDetailsNavigatorConfiguration;
-import com.amazon.alexa.vsk.clientlib.capability.operation.KeyPadControllerOperation;
 import com.amazon.alexa.vsk.clientlib.capability.operation.PlaybackControllerOperation;
 import com.amazon.alexa.vsk.clientlib.capability.operation.UIControllerOperation;
 import com.amazon.alexa.vsk.clientlib.capability.property.UIControllerSupportedProperty;
-import com.amazon.alexauicontroller.EntityType;
-import com.amazon.alexauicontroller.UIAction;
 import com.amazon.device.messaging.ADM;
+import com.example.vskfiretv.utils.AlexaLauncherUtils;
 import com.example.vskfiretv.utils.UIElementUtil;
 import com.google.gson.JsonElement;
 
@@ -98,7 +97,10 @@ public class MainActivity extends FragmentActivity {
     }
 
     private AlexaVideoCapability getAlexaChannelControllerCapability() {
-        return new AlexaChannelControllerCapability("1.0", null);
+        return new AlexaChannelControllerCapability
+                .Builder()
+                .withDefaults()
+                .build();
     }
 
     private AlexaVideoCapability getAlexaPlaybackControllerCapability() {
@@ -110,29 +112,57 @@ public class MainActivity extends FragmentActivity {
         playBackOperationsSupported.add(PlaybackControllerOperation.REWIND);
         playBackOperationsSupported.add(PlaybackControllerOperation.FAST_FORWARD);
 
-        return new AlexaPlaybackControllerCapability("3", playBackOperationsSupported);
-    }
+        return new AlexaPlaybackControllerCapability
+                .Builder()
+                .withVersion("3")
+                .withSupportedOperations(playBackOperationsSupported)
+                .build();    }
 
     private AlexaVideoCapability getAlexaRemoteVideoPlayerCapability() {
-        return new AlexaRemoteVideoPlayerCapability("1.0");
-    }
+        return new AlexaRemoteVideoPlayerCapability
+                .Builder()
+                .withDefaults()
+                .build();    }
 
     private AlexaVideoCapability getAlexaSeekControllerCapability() {
-        return new AlexaSeekController("1.0");
+        return new AlexaSeekControllerCapability
+                .Builder()
+                .withDefaults()
+                .build();
     }
 
     private AlexaVideoCapability getAlexaKeypadControllerCapability() {
-        return new AlexaKeyPadControllerCapability("3", Arrays.asList(KeyPadControllerOperation.values()));
+        return new AlexaKeyPadControllerCapability
+                .Builder()
+                .withDefaults()
+                .build();
     }
 
     private AlexaVideoCapability getAlexaUIControllerCapability() {
-        return new AlexaUIControllerCapability("3.0", Arrays.asList(UIControllerOperation.values()),
-                Arrays.asList(UIControllerSupportedProperty.values()));
+        return new AlexaUIControllerCapability
+                .Builder()
+                .withVersion("3.0")
+                .withOperations(Arrays.asList(UIControllerOperation.values()))
+                .withProperties(Arrays.asList(UIControllerSupportedProperty.values()))
+                .build();
     }
 
     private AlexaVideoCapability getMediaDetailsNavigatorCapability() {
-        return new AlexaMediaDetailsNavigatorCapability("3.0", Arrays.asList(MediaDetailsNavigatorConfiguration.VIDEO,
-                MediaDetailsNavigatorConfiguration.APP));
+        return new AlexaMediaDetailsNavigatorCapability
+                .Builder()
+                .withVersion("3.0")
+                .withEntityTypes(Arrays.asList(MediaDetailsNavigatorConfiguration.VIDEO,
+                        MediaDetailsNavigatorConfiguration.APP))
+                .build();
+    }
+
+    private AlexaVideoCapability getAlexaLauncherCapability() {
+        return new AlexaLauncherCapability
+                .Builder()
+                .withVersion(AlexaLauncherUtils.getAlexaLauncherVersion())
+                .withCatalogs(AlexaLauncherUtils.getLaunchCatalogs())
+                .withTargets(AlexaLauncherUtils.getLaunchTargets())
+                .build();
     }
 
     private void initializeAdm() {

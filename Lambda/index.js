@@ -100,6 +100,37 @@ exports.handler = (event, context, callback) => {
                       "App"
                     ]
                   }
+                },
+                {
+                  "interface": "Alexa.Launcher",
+                  "type": "AlexaInterface",
+                  "version": "3.1",
+                  "configurations": {
+                    "catalogs": [
+                      {
+                        "sourceId": "ALEXA_VIDEO_APP_STORE"
+                      }
+                    ],
+                    "targets" : [
+                      {
+                        "name": "play something",
+                        "identifier": "uri.for.play.something"
+                      },
+                      {
+                        "name": "play something else",
+                        "identifier": "uri.for.play.something.else"
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "supported": [
+                      {
+                        "name": "target"
+                      }
+                    ],
+                    "proactivelyReported": true,
+                    "retrievable": false
+                  }
                 }
               ]
             }]
@@ -407,7 +438,44 @@ exports.handler = (event, context, callback) => {
           return callback(null);
         }
       )
-    } else {
+    } else if (directive.header.name === "LaunchTarget") {
+      // Partner-specific logic to handle the directives goes here
+
+      // Below, we send a "success" response back to Alexa, indicating the directive was received by the Lambda
+      let resp = {
+        event: {
+          "header": {
+            // messageId, correlationToken, and endpoint information can be obtained from the event payload sent by Alexa
+            "messageId": "not-required",
+            "correlationToken": "not-required",
+            "name": "Response",
+            "namespace": "Alexa",
+            "payloadVersion": "3"
+          },
+          "endpoint": {
+            "scope": {
+              "type": "DirectedUserId",
+              "directedUserId": "not-required"
+            },
+            "endpointId": "not-required"
+          },
+          "payload": {}
+        }
+      };
+
+      // Process the directive by sending the message to app
+      sendMessageToDevice(JSON.stringify(event), context).then(
+          function(body) {
+            console.log("Sending ", directive.header.name, " response back to Alexa: ", JSON.stringify(resp));
+            return callback(null, resp);
+          },
+          function(err) {
+            console.log('Could not send the message to the device: ' + err);
+            return callback(null);
+          }
+      )
+    }
+    else {
       console.log("Directive is not supported. Ignoring it.");
       callback(null, 'Directive is not supported. Ignoring it.');
     }

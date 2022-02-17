@@ -23,4 +23,12 @@ public class Constants {
 
     // MediaDetailsNavigator Intent Actions
     public static final String ACTION_ON_MEDIA_DETAILS = "com.example.vskfiretv.ACTION_ON_MEDIA_DETAILS";
+
+    // Launch Targets
+    public static final String PLAY_SOMETHING = "play something";
+    public static final String PLAY_SOMETHING_ELSE = "play something else";
+
+    // Launch Target URIs
+    public static final String URI_FOR_PLAY_SOMETHING = "uri.for.play.something";
+    public static final String URI_FOR_PLAY_SOMETHING_ELSE = "uri.for.play.something.else";
 }
